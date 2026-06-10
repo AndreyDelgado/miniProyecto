@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aptify es una plataforma web para 
+    buscar apartamentos de alquiler en Costa Rica, con filtros por ubicación, 
+    precio y estilo de vida.">
+    <meta name="keywords" content="apartamentos, alquiler, Costa Rica, 
+    vivienda, mascotas, cochera, familias, estudiantes">
+    <meta name="author" content="Aptify">
+    <!-- CSS externo principal del sitio -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tipografías externas desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <title>Aptify | Inicio</title>
+</head>
+<body>
+
+    <!-- Encabezado principal fijo del sitio -->
+    <header class="site-header">
+        <div class="container header-content">
+            <p class="logo"><strong>&#9654; Aptify</strong></p>
+            <!-- Checkbox oculto para controlar el menú hamburguesa -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <!-- Botón visual del menú hamburguesa -->
+            <label for="menu-toggle" class="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <!-- Navegación principal -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a class="active-link" href="index.html">Inicio</a></li>
+                    <li><a href="buscar.html">Buscar</a></li>
+                    <li><a href="publicar.html">Publicar propiedad</a></li>
+                    <li><a href="#sobre-aptify">Sobre nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ubicación actual -->
+    <nav class="breadcrumb" aria-label="Ubicación actual">
+        <div class="container">
+            <a href="index.html">Inicio</a>
+            <span>Inicio</span>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Sección hero con columnas flotantes -->
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">Alquileres en Costa Rica</span>
+                    <h1>Tu próximo hogar, <em>filtrado para vos.</em></h1>
+                    <p>
+                        Bienvenido a <strong>Aptify</strong>, una plataforma interactiva para encontrar
+                        apartamentos de alquiler en Costa Rica. Filtra por provincia, presupuesto
+                        y estilo de vida, y encuentra exactamente lo que necesitas.
+                    </p>
+                    <!-- Jerarquía visual de acciones -->
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="buscar.html">
+                            Ver propiedades
+                        </a>
+                        <a class="btn-link" href="#sobre-aptify">
+                            Conocer la plataforma
+                        </a>
+                    </div>
+                    <!-- Caja informativa relativa con etiqueta absoluta -->
+                    <div class="hero-info">
+                        <span class="info-label">Nuevo</span>
+                        <p>
+                            <mark>Próximamente:</mark> registro de propiedades, sistema de favoritos
+                            y gestión completa de alquileres.
+                        </p>
+                        <button class="btn-secondary">
+                            Explorar plataforma
+                        </button>
+                    </div>
+                </div>
+                <!-- Imagen representativa del hero -->
+                <figure class="hero-image">
+                    <!-- Cambiar el png cuando finalmente tenga una imagen decente -->
+                    <img src="assets/images/hero-apartamentos.png" alt="Apartamento moderno de alquiler en Costa Rica">
+                    <figcaption>
+                        Encuentra tu hogar ideal con los filtros de Aptify.
+                    </figcaption>
+                </figure>
+            </div>
+            <!-- Barra de búsqueda rápida dentro del hero -->
+            <div class="container">
+                <div class="search-bar">
+                    <div class="search-field">
+                        <label for="provincia">Provincia</label>
+                        <select id="provincia" name="provincia">
+                            <option value="">Todas</option>
+                            <option value="san-jose">San José</option>
+                            <option value="alajuela">Alajuela</option>
+                            <option value="heredia">Heredia</option>
+                            <option value="cartago">Cartago</option>
+                            <option value="guanacaste">Guanacaste</option>
+                            <option value="puntarenas">Puntarenas</option>
+                            <option value="limon">Limón</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="precio">Precio máximo</label>
+                        <select id="precio" name="precio">
+                            <option value="">Sin límite</option>
+                            <option value="200000">₡200,000</option>
+                            <option value="350000">₡350,000</option>
+                            <option value="500000">₡500,000</option>
+                            <option value="700000">₡700,000+</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="tipo">Tipo de propiedad</label>
+                        <select id="tipo" name="tipo">
+                            <option value="">Todos</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="casa">Casa</option>
+                            <option value="estudio">Estudio</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary search-btn">Buscar</button>
+                </div>
+                <!-- Etiquetas de filtros rápidos -->
+                <div class="quick-tags">
+                    <span class="tag">&#128062; Acepta mascotas</span>
+                    <span class="tag">&#128663; Con cochera</span>
+                    <span class="tag">&#128106; Ideal para familias</span>
+                    <span class="tag">&#127891; Para estudiantes</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas generales de la plataforma -->
+        <section class="stats-section">
+            <div class="container stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num">+1,200</span>
+                    <span class="stat-label">Propiedades activas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">7</span>
+                    <span class="stat-label">Provincias cubiertas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Filtros interactivos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">Gratis</span>
+                    <span class="stat-label">Publicar propiedad</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propiedades recientes destacadas -->
+        <section class="listings-section">
+            <div class="container">
+                <span class="section-eyebrow">Disponible ahora</span>
+                <h2>Propiedades recientes</h2>
+                <div class="listings-grid">
+
+                    <!-- Ejemplo, tarjeta de propiedad 1 -->
+                    <article class="property-card">
+                        <figure>
+                            <img src="assets/images/prop-alajuela.png" alt="Apartamento moderno en Alajuela">
+                            <figcaption>Alajuela, Alajuela Centro</figcaption>
+                        </figure>
+                        <span class="card-label">Apartamento</span>
+                        <div class="property-card-content">
+                            <h3>Apartamento moderno en Alajuela</h3>
+                            <p class="property-location">&#128205; Alajuela, Alajuela Centro</p>
+                            <div class="property-features">
+                                <span>2 hab.</span>
+                                <span>1 baño</span>
+                                <span>48 m²</span>
+                            </div>
+                            <div class="property-tags">
+                                <span class="tag tag-sm">&#128062; Mascotas</span>
+                                <span class="tag tag-sm">&#128663; Cochera</span>
+                            </div>
+                            <div class="property-footer">
+                                <span class="property-price">₡350,000 <small>/mes</small></span>
+                                <a href="#" class="btn-card">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ejemplo, tarjeta de propiedad 2 -->
+                    <article class="property-card">
+                        <figure>
+                            <img src="assets/images/prop-heredia.png" alt="Casa con jardín en Heredia">
+                            <figcaption>Heredia, San Rafael</figcaption>
+                        </figure>
+                        <span class="card-label">Casa</span>
+                        <div class="property-card-content">
+                            <h3>Casa con jardín en Heredia</h3>
+                            <p class="property-location">&#128205; Heredia, San Rafael</p>
+                            <div class="property-features">
+                                <span>3 hab.</span>
+                                <span>2 baños</span>
+                                <span>100 m²</span>
+                            </div>
+                            <div class="property-tags">
+                                <span class="tag tag-sm">&#128106; Familias</span>
+                                <span class="tag tag-sm">&#128663; Cochera</span>
+                            </div>
+                            <div class="property-footer">
+                                <span class="property-price">₡600,000 <small>/mes</small></span>
+                                <a href="#" class="btn-card">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ejemplo, tarjeta de propiedad 3 -->
+                    <article class="property-card">
+                        <figure>
+                            <img src="assets/images/prop-sanjose.png" alt="Estudio compacto en San José">
+                            <figcaption>San José, Barrio Escalante</figcaption>
+                        </figure>
+                        <span class="card-label">Estudio</span>
+                        <div class="property-card-content">
+                            <h3>Estudio compacto en San José</h3>
+                            <p class="property-location">&#128205; San José, Barrio Escalante</p>
+                            <div class="property-features">
+                                <span>1 hab.</span>
+                                <span>1 baño</span>
+                                <span>35 m²</span>
+                            </div>
+                            <div class="property-tags">
+                                <span class="tag tag-sm">&#127891; Estudiantes</span>
+                            </div>
+                            <div class="property-footer">
+                                <span class="property-price">₡185,000 <small>/mes</small></span>
+                                <a href="#" class="btn-card">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ejemplo, tarjeta de propiedad 4 -->
+                    <article class="property-card">
+                        <figure>
+                            <img src="assets/images/prop-cartago.png" alt="Apartamento céntrico en Cartago">
+                            <figcaption>Cartago, El Guarco</figcaption>
+                        </figure>
+                        <span class="card-label">Apartamento</span>
+                        <div class="property-card-content">
+                            <h3>Apartamento céntrico en Cartago</h3>
+                            <p class="property-location">&#128205; Cartago, El Guarco</p>
+                            <div class="property-features">
+                                <span>2 hab.</span>
+                                <span>1 baño</span>
+                                <span>50 m²</span>
+                            </div>
+                            <div class="property-tags">
+                                <span class="tag tag-sm">&#128145; Parejas</span>
+                            </div>
+                            <div class="property-footer">
+                                <span class="property-price">₡280,000 <small>/mes</small></span>
+                                <a href="#" class="btn-card">Ver más</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                <!-- Acción para ver todas las propiedades -->
+                <div class="listings-cta">
+                    <a href="buscar.html" class="btn-primary">Ver todas las propiedades</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aside: propiedad destacada -->
+        <aside>
+            <h4>Propiedad destacada</h4>
+            <p>
+                <strong>Apartamento Sky Garden, Heredia</strong><br>
+                Precio: <span>₡420,000 / mes</span><br>
+                Cupos disponibles: <span>1 unidad</span>
+            </p>
+            <small>
+                La información mostrada forma parte de un ejemplo académico.
+            </small>
+        </aside>
+
+        <!-- Cómo funciona la plataforma -->
+        <section id="como-funciona" class="how-section">
+            <div class="container">
+                <span class="section-eyebrow">¿Cómo funciona?</span>
+                <h2>Encuentra tu apartamento en tres pasos</h2>
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <div class="step-icon">&#128269;</div>
+                        <h3>Establece tus filtros</h3>
+                        <p>Elije provincia, cantón, rango de precio y las características 
+                            que más te importan: mascotas, cochera, tipo de inquilino y más.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="step-icon">&#127968;</div>
+                        <h3>Explora las opciones</h3>
+                        <p>Visualiza en tiempo real los apartamentos que coinciden 
+                            exactamente con tus criterios. Sin vueltas innecesarias.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="step-icon">&#128222;</div>
+                        <h3>Contacta al arrendatario</h3>
+                        <p>Accede a la información de contacto de la propiedad que te 
+                            gustó y coordina directamente tu visita.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por qué elegir Aptify -->
+        <section id="sobre-aptify" class="about-section">
+            <div class="container about-content">
+                <!-- Imagen representativa para cuando la tengamos -->
+                <figure class="about-image">
+                    <img src="assets/images/about-aptify.png" alt="Persona buscando apartamento desde su computadora">
+                    <figcaption>
+                        Aptify simplifica la búsqueda de alquileres en Costa Rica.
+                    </figcaption>
+                </figure>
+                <div class="about-text">
+                    <span class="section-eyebrow">¿Por qué Aptify?</span>
+                    <h2>Búsqueda inteligente, sin desgaste.</h2>
+                    <p>
+                        La forma tradicional de buscar alquiler (letreros en la calle, grupos de
+                        Facebook, páginas sin filtros) consume tiempo, dinero y energía. Aptify
+                        centraliza toda la oferta en un solo lugar y te permite filtrar con precisión.
+                    </p>
+                    <h3>Beneficios principales</h3>
+                    <div class="benefits-grid">
+                        <article class="benefit-card">
+                            <h4>Filtros exactos</h4>
+                            <p>Busca por provincia, cantón, precio y características 
+                                específicas de cada propiedad.</p>
+                        </article>
+                        <article class="benefit-card">
+                            <h4>Resultados en tiempo real</h4>
+                            <p>La lista se actualiza al instante sin necesidad de recargar la página.</p>
+                        </article>
+                        <article class="benefit-card">
+                            <h4>Publicación gratuita</h4>
+                            <p>Cualquier arrendatario puede registrar su propiedad de forma rápida y sin costo.</p>
+                        </article>
+                    </div>
+                    <a href="buscar.html" class="btn-primary">Comenzar búsqueda</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zonas populares para alquilar -->
+        <section class="locations-section">
+            <div class="container">
+                <span class="section-eyebrow">Explora por zona</span>
+                <h2>Ciudades y cantones populares</h2>
+                <div class="locations-grid">
+                    <a href="#" class="location-chip">San José</a>
+                    <a href="#" class="location-chip">Alajuela</a>
+                    <a href="#" class="location-chip">Heredia</a>
+                    <a href="#" class="location-chip">Cartago</a>
+                    <a href="#" class="location-chip">Liberia</a>
+                    <a href="#" class="location-chip">Santa Ana</a>
+                    <a href="#" class="location-chip">Escazú</a>
+                    <a href="#" class="location-chip">Curridabat</a>
+                    <a href="#" class="location-chip">San Ramón</a>
+                    <a href="#" class="location-chip">Pérez Zeledón</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner de llamada a acción: publicar propiedad -->
+        <section class="cta-banner">
+            <div class="container cta-content">
+                <div class="cta-text">
+                    <h2>¿Tienes una propiedad disponible?</h2>
+                    <p>
+                        Publica tu apartamento o casa en Aptify de forma gratuita y conecta
+                        con inquilinos que buscan exactamente lo que ofreces.
+                    </p>
+                </div>
+                <a href="publicar.html" class="btn-gold">Publicar propiedad</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <p class="footer-logo"><strong>&#9654; Aptify</strong></p>
+                <p class="footer-tagline">Alquileres inteligentes en Costa Rica.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Plataforma</h5>
+                <ul>
+                    <li><a href="buscar.html">Buscar apartamentos</a></li>
+                    <li><a href="publicar.html">Publicar propiedad</a></li>
+                    <li><a href="#">Crear alerta</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Tipos de propiedad</h5>
+                <ul>
+                    <li><a href="#">Apartamentos</a></li>
+                    <li><a href="#">Casas</a></li>
+                    <li><a href="#">Estudios</a></li>
+                    <li><a href="#">Para estudiantes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contacto</h5>
+                <address>
+                    Aptify CR<br>
+                    Correo: hola@aptify.cr<br>
+                    Costa Rica
+                </address>
+            </div>
+        </div>
+        <p>
+            <small>&copy; 2025 Aptify. Todos los derechos reservados. | UTN — Programación en Ambiente Web I</small>
+        </p>
+    </footer>
+
+</body>
+</html>
