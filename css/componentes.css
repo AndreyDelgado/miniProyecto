@@ -1,0 +1,435 @@
+/* =========================
+   Botones, etiquetas, tarjetas de propiedad,
+   estadísticas, aside y elementos reutilizables
+   que aparecen en más de una página.
+   ========================= */
+
+/* ── BOTONES ── */
+
+/* Botón principal con fondo dorado */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+    padding: 12px 24px;
+    border-radius: var(--radio-sm);
+    font-weight: 600;
+    font-family: var(--fuente-cuerpo);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+/* Hover del botón principal */
+.btn-primary:hover {
+    background-color: var(--color-dorado-claro);
+    transform: translateY(-1px);
+}
+
+/* Botón secundario con borde */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-dorado);
+    border: 2px solid var(--color-dorado);
+    padding: 10px 20px;
+    border-radius: var(--radio-sm);
+    font-weight: 600;
+    font-family: var(--fuente-cuerpo);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover del botón secundario */
+.btn-secondary:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+}
+
+/* Enlace con apariencia de texto */
+.btn-link {
+    color: var(--color-dorado);
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Botón dentro de tarjetas */
+.btn-card {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-dorado);
+    border: 1px solid var(--color-dorado);
+    padding: 8px 16px;
+    border-radius: var(--radio-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover del botón de tarjeta */
+.btn-card:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+}
+
+/* Botón deshabilitado (para propiedades no disponibles) */
+.btn-card-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* Botón dorado grande para CTA */
+.btn-gold {
+    display: inline-block;
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+    padding: 14px 32px;
+    border-radius: var(--radio-sm);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+/* Hover del botón dorado */
+.btn-gold:hover {
+    background-color: var(--color-dorado-claro);
+    transform: translateY(-1px);
+}
+
+/* Botón para limpiar filtros */
+.btn-clear {
+    background-color: transparent;
+    color: var(--color-texto-tenue);
+    border: 1px solid var(--color-borde);
+    padding: 5px 12px;
+    border-radius: var(--radio-pill);
+    font-size: 0.75rem;
+    font-family: var(--fuente-cuerpo);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+/* Hover del botón limpiar */
+.btn-clear:hover {
+    border-color: var(--color-dorado);
+    color: var(--color-dorado);
+}
+
+/* ── UX: ACCESIBILIDAD Y FOCO ── */
+
+/* Mejora accesibilidad al navegar con teclado */
+.main-nav a:focus,
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-card:focus,
+.btn-link:focus,
+.btn-gold:focus {
+    outline: 3px solid var(--color-dorado);
+    outline-offset: 3px;
+}
+
+/* ── ETIQUETAS (TAGS) ── */
+
+/* Etiqueta base */
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    border-radius: var(--radio-pill);
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    font-size: 0.85rem;
+    color: var(--color-texto-suave);
+}
+
+/* Etiqueta pequeña para tarjetas */
+.tag-sm {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+}
+
+/* ── ESTADÍSTICAS ── */
+
+.stats-section {
+    background-color: var(--color-fondo);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Grid de tarjetas de estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjeta de estadística */
+.stat-card {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Número principal de la estadística */
+.stat-num {
+    font-family: var(--fuente-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+}
+
+/* Descripción de la estadística */
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--color-texto-suave);
+}
+
+/* ── TARJETAS DE PROPIEDADES ── */
+
+.listings-section {
+    background-color: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Grid crea columnas automáticas y responsivas */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 32px;
+    margin-bottom: 40px;
+}
+
+/* Tarjeta de propiedad */
+.property-card {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    /* Flex interno mantiene el contenido ordenado verticalmente */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* Elimina márgenes del figure en tarjeta */
+.property-card figure {
+    margin: 0;
+}
+
+/* Imagen de la tarjeta */
+.property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* Placeholder visual mientras no hay imagen */
+    background: linear-gradient(135deg, var(--color-superficie-2) 0%, #333328 100%);
+}
+
+/* Texto bajo la imagen en la tarjeta */
+.property-card figcaption {
+    font-size: 0.78rem;
+    color: var(--color-texto-tenue);
+    padding: 8px 16px 0 16px;
+}
+
+/* Etiqueta del tipo de propiedad (posición absoluta) */
+.card-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+    padding: 4px 12px;
+    border-radius: var(--radio-pill);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 5;
+}
+
+/* Insignia de estado de disponibilidad (posición absoluta) */
+.card-estado {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: var(--radio-pill);
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 5;
+}
+
+/* Estado disponible sobre tarjeta */
+.card-estado.estado-disponible {
+    background-color: rgba(59, 186, 108, 0.15);
+    border: 1px solid #3bba6c;
+    color: #3bba6c;
+}
+
+/* Estado no disponible sobre tarjeta */
+.card-estado.estado-inactivo {
+    background-color: rgba(107, 104, 96, 0.2);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-tenue);
+}
+
+/* Tarjeta inactiva con opacidad reducida */
+.card-inactiva {
+    opacity: 0.6;
+}
+
+/* Contenido textual de la tarjeta */
+.property-card-content {
+    padding: 18px;
+    /* Ocupa el espacio disponible para igualar alturas */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Título de la propiedad */
+.property-card-content h3 {
+    font-size: 1rem;
+    color: var(--color-texto);
+    margin-bottom: 0;
+}
+
+/* Ubicación de la propiedad */
+.property-location {
+    font-size: 0.82rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0;
+}
+
+/* Características de la propiedad (habitaciones, baños, m²) */
+.property-features {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Cada característica */
+.property-features span {
+    font-size: 0.78rem;
+    color: var(--color-texto-tenue);
+    border: 1px solid var(--color-borde);
+    padding: 2px 10px;
+    border-radius: var(--radio-sm);
+}
+
+/* Fila de etiquetas dentro de tarjeta */
+.property-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Pie de tarjeta con precio y botón */
+.property-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-borde);
+    margin-top: auto;
+}
+
+/* Precio de la propiedad */
+.property-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+    font-family: var(--fuente-display);
+}
+
+/* Texto pequeño del precio */
+.property-price small {
+    font-size: 0.75rem;
+    color: var(--color-texto-suave);
+    font-weight: 400;
+}
+
+/* Acción centrada bajo el grid */
+.listings-cta {
+    text-align: center;
+}
+
+/* ── ASIDE ── */
+
+aside {
+    background-color: rgba(201, 168, 76, 0.06);
+    border-top: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Centra el contenido del aside */
+aside p,
+aside small,
+aside h4 {
+    width: min(90%, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+aside h4 {
+    color: var(--color-dorado);
+    margin-bottom: 10px;
+}
+
+aside small {
+    display: block;
+    color: var(--color-texto-tenue);
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* ── ESTADO VACÍO ── */
+
+/* Se muestra cuando no hay resultados en una búsqueda */
+.empty-state {
+    background-color: var(--color-superficie);
+    border: 2px dashed var(--color-borde);
+    border-radius: var(--radio-lg);
+    padding: 48px 32px;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+/* Título del estado vacío */
+.empty-state h3 {
+    color: var(--color-dorado);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* Descripción del estado vacío */
+.empty-state p {
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Mensaje de carga o sin resultados */
+.mensaje-vacio {
+    color: var(--color-texto-tenue);
+    font-size: 0.9rem;
+    padding: 24px 0;
+}

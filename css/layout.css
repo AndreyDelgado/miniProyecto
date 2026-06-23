@@ -1,0 +1,223 @@
+/* =========================
+   Header, navegación, breadcrumb y footer.
+   Elementos estructurales presentes en todas las páginas.
+   ========================= */
+
+/* ── HEADER Y NAVEGACIÓN ── */
+
+/* Header fijo superior */
+.site-header {
+    background-color: rgba(26, 26, 24, 0.95);
+    color: var(--color-texto);
+    padding: 16px 0;
+    border-bottom: 3px solid var(--color-dorado);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+/* Flexbox alinea logo, menú y botón hamburguesa */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logo del sitio */
+.logo {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-family: var(--fuente-display);
+    color: var(--color-texto);
+}
+
+/* Checkbox oculto para abrir/cerrar menú */
+.menu-toggle {
+    display: none;
+}
+
+/* Botón hamburguesa oculto en escritorio */
+.menu-button {
+    display: none;
+    width: 38px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* Líneas del botón hamburguesa */
+.menu-button span {
+    display: block;
+    height: 4px;
+    margin-bottom: 6px;
+    background-color: var(--color-texto);
+    border-radius: 4px;
+}
+
+/* Menú principal */
+.main-nav ul {
+    list-style: none;
+    /* Flexbox organiza enlaces en fila */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Enlaces del menú */
+.main-nav a {
+    color: var(--color-texto-suave);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radio-sm);
+    display: inline-block;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Cambio visual al pasar el mouse */
+.main-nav a:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+}
+
+/* Indicador de página activa */
+.active-link {
+    background-color: var(--color-dorado);
+    color: var(--color-fondo) !important;
+    font-weight: 600;
+}
+
+/* Estado del usuario logueado en el Nav */
+.user-greeting {
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+    margin-right: 12px;
+}
+
+/* Nombre del usuario resaltado en dorado */
+.user-greeting b {
+    color: var(--color-dorado);
+}
+
+/* ── BREADCRUMB ──
+   Barra de ubicación actual */
+
+.breadcrumb {
+    background-color: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 12px 0;
+}
+
+/* Distribución simple de la ruta */
+.breadcrumb .container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+/* Separador visual sin agregar texto extra al HTML */
+.breadcrumb a::after {
+    content: "/";
+    margin-left: 8px;
+    color: var(--color-texto-tenue);
+}
+
+.breadcrumb a {
+    color: var(--color-dorado);
+    font-weight: bold;
+}
+
+.breadcrumb span {
+    color: var(--color-texto-suave);
+}
+
+/* ── FOOTER ── */
+
+footer {
+    background-color: #141412;
+    color: var(--color-texto);
+    padding: 56px 0 24px 0;
+    border-top: 1px solid var(--color-borde);
+    text-align: center;
+}
+
+/* Distribución en columnas del footer */
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    text-align: left;
+}
+
+/* Logo del footer */
+.footer-logo {
+    font-family: var(--fuente-display);
+    font-size: 1.3rem;
+    color: var(--color-texto);
+    margin-bottom: 8px;
+}
+
+/* Tagline del footer */
+.footer-tagline {
+    font-size: 0.85rem;
+    color: var(--color-texto-suave);
+    max-width: 200px;
+    line-height: 1.5;
+}
+
+/* Columna del footer */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Títulos de columnas del footer */
+.footer-col h5 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-texto-tenue);
+    margin-bottom: 4px;
+    font-family: var(--fuente-cuerpo);
+}
+
+/* Lista del footer */
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Enlaces del footer */
+footer a {
+    color: var(--color-texto-suave);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+}
+
+/* Hover de enlaces del footer */
+footer a:hover {
+    color: var(--color-dorado);
+}
+
+/* Dirección del footer */
+footer address {
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    line-height: 1.7;
+}
+
+/* Texto de copyright */
+footer small {
+    font-size: 0.78rem;
+    color: var(--color-texto-tenue);
+}

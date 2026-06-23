@@ -1,0 +1,706 @@
+/* =========================
+   Estilos específicos de cada página:
+   index.html → hero, barra de búsqueda, cómo funciona, about, locations, cta-banner
+   buscar.html → hero, panel de filtros, área de resultados
+   acceso.html → formularios de login y registro
+   ========================= */
+
+/* =========================
+   INDEX – HERO
+   ========================= */
+
+.hero {
+    background-color: var(--color-superficie);
+    padding: 64px 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Flexbox crea dos columnas en el hero */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 40px;
+}
+
+/* Columna de texto */
+.hero-text {
+    flex: 1;
+}
+
+/* Título principal del hero */
+.hero-text h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    color: var(--color-texto);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+/* Palabra en cursiva y dorada del título */
+.hero-text h1 em {
+    font-style: normal;
+    color: var(--color-dorado);
+}
+
+/* Texto descriptivo del hero */
+.hero-text p {
+    font-size: 1.05rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 28px;
+}
+
+/* Etiqueta decorativa del hero */
+.hero-badge {
+    display: inline-block;
+    background-color: rgba(201, 168, 76, 0.15);
+    color: var(--color-dorado);
+    border: 1px solid var(--color-dorado);
+    padding: 6px 14px;
+    border-radius: var(--radio-pill);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* Columna de imagen del hero */
+.hero-image {
+    flex: 1;
+    background-color: var(--color-superficie-2);
+    padding: 16px;
+    border-radius: var(--radio-lg);
+    border: 1px solid var(--color-borde);
+}
+
+/* Imagen del hero */
+.hero-image img {
+    width: 100%;
+    border-radius: var(--radio-md);
+    min-height: 260px;
+    background-color: var(--color-superficie-2);
+    object-fit: cover;
+}
+
+/* Pie de imagen del hero */
+.hero-image figcaption {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--color-texto-tenue);
+    text-align: center;
+}
+
+/* Caja informativa: posición relativa para la etiqueta absoluta */
+.hero-info {
+    margin-top: 24px;
+    padding: 28px 18px 18px 18px;
+    background-color: rgba(201, 168, 76, 0.07);
+    border-left: 4px solid var(--color-dorado);
+    border-radius: var(--radio-md);
+    position: relative;
+}
+
+/* Etiqueta flotante de la caja informativa */
+.info-label {
+    position: absolute;
+    top: -12px;
+    right: 18px;
+    background-color: var(--color-dorado);
+    color: var(--color-fondo);
+    padding: 4px 12px;
+    border-radius: var(--radio-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* Jerarquía de acciones del hero */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+/* =========================
+   INDEX – BARRA DE BÚSQUEDA
+   ========================= */
+
+/* Contenedor general de la barra */
+.search-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cada campo de la barra */
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 130px;
+}
+
+/* Etiqueta del campo */
+.search-field label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-texto-tenue);
+}
+
+/* Select del campo */
+.search-field select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    padding: 4px 0 6px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+/* Select al enfocar */
+.search-field select:focus {
+    border-bottom-color: var(--color-dorado);
+}
+
+/* Opciones del select */
+.search-field select option {
+    background-color: var(--color-superficie-2);
+    color: var(--color-texto);
+}
+
+/* Botón de búsqueda dentro de la barra */
+.search-btn {
+    flex-shrink: 0;
+    height: 40px;
+    padding: 0 24px;
+}
+
+/* Fila de etiquetas rápidas */
+.quick-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* =========================
+   INDEX – CÓMO FUNCIONA
+   ========================= */
+
+.how-section {
+    background-color: var(--color-fondo);
+}
+
+/* Grid de pasos del proceso */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+/* Tarjeta de paso */
+.step-card {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 32px 24px;
+    text-align: center;
+}
+
+/* Ícono del paso */
+.step-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* Título del paso */
+.step-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+}
+
+/* Descripción del paso */
+.step-card p {
+    font-size: 0.9rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0;
+}
+
+/* =========================
+   INDEX – SOBRE APTIFY
+   ========================= */
+
+.about-section {
+    background-color: var(--color-superficie);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Dos columnas: imagen y texto */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+}
+
+/* Columna de imagen */
+.about-image {
+    flex: 1;
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-lg);
+    padding: 16px;
+    margin: 0;
+}
+
+/* Imagen de la sección about */
+.about-image img {
+    width: 100%;
+    border-radius: var(--radio-md);
+    min-height: 280px;
+    background-color: var(--color-superficie-2);
+    object-fit: cover;
+}
+
+/* Pie de imagen */
+.about-image figcaption {
+    font-size: 0.82rem;
+    color: var(--color-texto-tenue);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Columna de texto */
+.about-text {
+    flex: 1;
+}
+
+/* Párrafo de la columna de texto */
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.75;
+}
+
+/* Título de sección en about */
+.about-text h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 16px;
+}
+
+/* Grid de beneficios */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 28px;
+}
+
+/* Tarjeta de beneficio */
+.benefit-card {
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 18px;
+}
+
+/* Título del beneficio */
+.benefit-card h4 {
+    color: var(--color-dorado);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+/* Descripción del beneficio */
+.benefit-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* =========================
+   INDEX – ZONAS POPULARES
+   ========================= */
+
+.locations-section {
+    background-color: var(--color-superficie-2);
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Grid de chips de ubicación */
+.locations-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+/* Chip de ubicación */
+.location-chip {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-pill);
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+/* Hover del chip */
+.location-chip:hover {
+    border-color: var(--color-dorado);
+    color: var(--color-dorado);
+    background-color: rgba(201, 168, 76, 0.06);
+}
+
+/* =========================
+   INDEX – BANNER CTA
+   ========================= */
+
+.cta-banner {
+    background: linear-gradient(135deg, #26241c 0%, var(--color-superficie-2) 100%);
+    border-top: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Diseño en dos columnas para texto y botón */
+.cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Bloque de texto del CTA */
+.cta-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+}
+
+/* Párrafo del CTA */
+.cta-text p {
+    color: var(--color-texto-suave);
+    max-width: 520px;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* =========================
+   BUSCAR – HERO Y LAYOUT
+   ========================= */
+
+/* Hero de la página de búsqueda */
+.buscar-hero {
+    background-color: var(--color-superficie);
+    padding: 48px 0 36px 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Título de la página de búsqueda */
+.buscar-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--color-texto);
+    margin-bottom: 10px;
+}
+
+/* Descripción bajo el título */
+.buscar-hero p {
+    color: var(--color-texto-suave);
+    max-width: 560px;
+    font-size: 0.97rem;
+    margin-bottom: 0;
+}
+
+/* Sección principal con filtros y resultados */
+.buscar-section {
+    padding: 40px 0 64px 0;
+    background-color: var(--color-fondo);
+}
+
+/* Layout de dos columnas: panel izquierdo + resultados */
+.buscar-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+/* =========================
+   BUSCAR – PANEL DE FILTROS
+   ========================= */
+
+/* Contenedor del panel lateral de filtros */
+.filtros-panel {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 24px;
+    /* Queda fijo al hacer scroll si hay muchos resultados */
+    position: sticky;
+    top: 86px;
+    padding-block: 24px;
+}
+
+/* Encabezado del panel: título y botón limpiar en fila */
+.filtros-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Título del panel de filtros */
+.filtros-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 0;
+    font-family: var(--fuente-cuerpo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Grupo de filtro individual (label + select) */
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+/* Etiqueta del filtro */
+.filtro-grupo label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-texto-tenue);
+}
+
+/* Select del filtro con flecha personalizada */
+.filtro-grupo select {
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-sm);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.88rem;
+    padding: 9px 12px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6860' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: border-color 0.2s;
+}
+
+/* Select al enfocar */
+.filtro-grupo select:focus {
+    border-color: var(--color-dorado);
+}
+
+/* Opciones del select */
+.filtro-grupo select option {
+    background-color: var(--color-superficie-2);
+    color: var(--color-texto);
+}
+
+/* Nota informativa al pie del panel */
+.filtros-info {
+    margin-top: 4px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Texto de la nota */
+.filtros-info small {
+    font-size: 0.78rem;
+    color: var(--color-texto-tenue);
+    line-height: 1.5;
+}
+
+/* Enlace dentro de la nota */
+.filtros-info a {
+    color: var(--color-dorado);
+}
+
+.filtros-info a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   BUSCAR – ÁREA DE RESULTADOS
+   ========================= */
+
+/* Área derecha donde se muestran las tarjetas */
+.resultados-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Barra superior con conteo y estados de referencia */
+.resultados-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 14px 18px;
+}
+
+/* Mensaje de conteo de resultados */
+.resultados-mensaje {
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Referencia visual de estados */
+.estados-ref {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* Color verde para disponible */
+.estado-disponible {
+    color: #3bba6c;
+}
+
+/* Color tenue para no disponible */
+.estado-inactivo {
+    color: var(--color-texto-tenue);
+}
+
+/* =========================
+   ACCESO – LOGIN Y REGISTRO
+   ========================= */
+
+/* Sección que ocupa toda la altura visible */
+.auth-section {
+    padding: 80px 20px;
+    background-color: var(--color-fondo);
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor centrado de ancho máximo ideal para formularios */
+.auth-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* Tarjeta del formulario */
+.auth-card {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md);
+    padding: 40px 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Título del formulario en dorado */
+.auth-card h2 {
+    color: var(--color-dorado);
+    margin-bottom: 8px;
+}
+
+/* Subtítulo descriptivo del formulario */
+.auth-card p {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    color: var(--color-texto-suave);
+}
+
+/* Grupo de campo (label + input) */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Etiqueta del campo */
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* Input del formulario */
+.form-group input {
+    background-color: var(--color-superficie-2);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    padding: 12px 16px;
+    border-radius: var(--radio-sm);
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    font-family: var(--fuente-cuerpo);
+}
+
+/* Input al enfocar */
+.form-group input:focus {
+    border-color: var(--color-dorado);
+}
+
+/* Botón de acción del formulario */
+.auth-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radio-sm);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo);
+    font-size: 1rem;
+}
+
+/* Enlace para cambiar entre login y registro */
+.auth-switch {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--color-texto-suave);
+}
+
+/* Enlace resaltado del switch */
+.auth-switch a {
+    color: var(--color-dorado);
+    font-weight: 700;
+}
