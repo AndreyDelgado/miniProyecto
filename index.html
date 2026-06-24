@@ -103,51 +103,7 @@
                     </figcaption>
                 </figure>
             </div>
-            <!-- Barra de búsqueda rápida dentro del hero -->
-            <div class="container">
-                <div class="search-bar">
-                    <div class="search-field">
-                        <label for="provincia">Provincia</label>
-                        <select id="provincia" name="provincia">
-                            <option value="">Todas</option>
-                            <option value="san-jose">San José</option>
-                            <option value="alajuela">Alajuela</option>
-                            <option value="heredia">Heredia</option>
-                            <option value="cartago">Cartago</option>
-                            <option value="guanacaste">Guanacaste</option>
-                            <option value="puntarenas">Puntarenas</option>
-                            <option value="limon">Limón</option>
-                        </select>
-                    </div>
-                    <div class="search-field">
-                        <label for="precio">Precio máximo</label>
-                        <select id="precio" name="precio">
-                            <option value="">Sin límite</option>
-                            <option value="200000">₡200,000</option>
-                            <option value="350000">₡350,000</option>
-                            <option value="500000">₡500,000</option>
-                            <option value="700000">₡700,000+</option>
-                        </select>
-                    </div>
-                    <div class="search-field">
-                        <label for="tipo">Tipo de propiedad</label>
-                        <select id="tipo" name="tipo">
-                            <option value="">Todos</option>
-                            <option value="apartamento">Apartamento</option>
-                            <option value="casa">Casa</option>
-                            <option value="estudio">Estudio</option>
-                        </select>
-                    </div>
-                    <button class="btn-primary search-btn">Buscar</button>
-                </div>
-                <!-- Etiquetas de filtros rápidos -->
-                <div class="quick-tags">
-                    <span class="tag">&#128062; Acepta mascotas</span>
-                    <span class="tag">&#128663; Con cochera</span>
-                    <span class="tag">&#128106; Ideal para familias</span>
-                    <span class="tag">&#127891; Para estudiantes</span>
-                </div>
-            </div>
+            
         </section>
 
         <!-- Estadísticas generales de la plataforma -->
@@ -177,9 +133,13 @@
             <div class="container">
                 <span class="section-eyebrow">Disponible ahora</span>
                 <h2>Propiedades recientes</h2>
-                <!-- Las tarjetas se insertan aquí mediante index.js -->
-                <div id="contenedorRecientes" class="listings-grid"></div>
-                <!-- Acción para ver todas las propiedades -->
+                <div class="carousel-wrapper">
+                    <button id="btn-prev" class="carousel-arrow" aria-label="Anterior">&#10094;</button>
+                    <div class="carousel-window">
+                        <div id="contenedorRecientes" class="listings-grid"></div>
+                    </div>
+                    <button id="btn-next" class="carousel-arrow" aria-label="Siguiente">&#10095;</button>
+                </div>
                 <div class="listings-cta">
                     <a href="buscar.html" class="btn-primary">Ver todas las propiedades</a>
                 </div>

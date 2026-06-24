@@ -433,3 +433,57 @@ aside small {
     font-size: 0.9rem;
     padding: 24px 0;
 }
+
+/* ── ESTILOS DEL CARRUSEL ── */
+
+/* Contenedor del carrusel completo */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+/* La "ventana" que oculta las tarjetas que quedan fuera de la pantalla */
+.carousel-window {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Aplicamos el diseño horizontal ÚNICAMENTE cuando la rejilla está dentro de un carrusel */
+.carousel-window .listings-grid {
+    display: flex; 
+    flex-direction: row;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+/* Asegura el tamaño de la tarjeta SOLO dentro del carrusel de inicio */
+.carousel-window .property-card {
+    flex: 0 0 calc(25% - 15px);
+    min-width: 250px;
+}
+
+/* Estilo para las flechas de navegación */
+.carousel-arrow {
+    background-color: #1e1e1e;
+    color: #dfb05b;
+    border: 1px solid #dfb05b;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background-color: #dfb05b;
+    color: #1e1e1e;
+}

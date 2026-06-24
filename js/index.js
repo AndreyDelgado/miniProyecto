@@ -1,5 +1,5 @@
 /* =========================
-   Renderiza las tarjetas recientes en la página de inicio
+   Renderiza las tarjetas recientes y controla el Carrusel en la página de inicio
    a partir del arreglo de propiedades definido en propiedadesData.js.
    ========================= */
 
@@ -19,7 +19,6 @@ function formatearPrecio(precio) {
 
 /* Construye el HTML de una tarjeta de propiedad */
 function crearTarjetaPropiedad(propiedad) {
-    /* Construye las etiquetas de características */
     const tagsHTML = propiedad.etiquetas.map(function(etiqueta) {
         const icono = iconosEtiqueta[etiqueta] || "&#127968;";
         return '<span class="tag tag-sm">' + icono + ' ' + etiqueta + '</span>';
@@ -50,25 +49,71 @@ function crearTarjetaPropiedad(propiedad) {
     );
 }
 
-/* Renderiza las primeras 4 propiedades activas en el grid del index */
-function renderizarPropiedadesRecientes() {
+/* Lógica global del movimiento del Carrusel */
+let posicionActual = 0;
+
+function inicializarCarrusel() {
     const contenedor = document.getElementById("contenedorRecientes");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
 
-    /* Filtra solo las activas y toma las primeras 4 */
-    const recientes = propiedades.filter(function(p) {
+    /* Filtra y renderiza todas las propiedades activas */
+    const activas = propiedades.filter(function(p) {
         return p.activa;
-    }).slice(0, 4);
+    });
 
-    if (recientes.length === 0) {
+    if (activas.length === 0) {
         contenedor.innerHTML = '<p class="mensaje-vacio">No hay propiedades disponibles por el momento.</p>';
+        if(btnPrev) btnPrev.style.display = 'none';
+        if(btnNext) btnNext.style.display = 'none';
         return;
     }
 
-    /* Inserta cada tarjeta en el contenedor */
-    contenedor.innerHTML = recientes.map(crearTarjetaPropiedad).join("");
+    contenedor.innerHTML = activas.map(crearTarjetaPropiedad).join("");
+
+    /* Control de navegación */
+    const tarjetas = contenedor.querySelectorAll(".property-card");
+    
+    // Función que calcula el ancho real para mover el contenedor
+    function moverCarrusel() {
+        if (tarjetas.length === 0) return;
+        const anchoTarjeta = tarjetas[0].getBoundingClientRect().width;
+        const gap = 20;
+        
+        // Desplazamiento basado en el índice actual
+        const desplazamiento = posicionActual * (anchoTarjeta + gap);
+        contenedor.style.transform = "translateX(-" + desplazamiento + "px)";
+    }
+
+    btnNext.addEventListener("click", function() {
+        // Detiene el avance si llegamos al límite visible
+        // Ajustable según cuántas tarjetas se deseen desplazar por click.
+        const tarjetasVisibles = Math.floor(contenedor.parentElement.clientWidth / tarjetas[0].clientWidth);
+        if (posicionActual < tarjetas.length - tarjetasVisibles) {
+            posicionActual++;
+            moverCarrusel();
+        } else {
+            posicionActual = 0; // Efecto bucle: vuelve al inicio
+            moverCarrusel();
+        }
+    });
+
+    btnPrev.addEventListener("click", function() {
+        if (posicionActual > 0) {
+            posicionActual--;
+            moverCarrusel();
+        } else {
+            const tarjetasVisibles = Math.floor(contenedor.parentElement.clientWidth / tarjetas[0].clientWidth);
+            posicionActual = tarjetas.length - tarjetasVisibles; // Efecto bucle: va al final
+            moverCarrusel();
+        }
+    });
+
+    // Ajusta la posición dinámicamente si el usuario cambia el tamaño de la ventana del navegador
+    window.addEventListener("resize", moverCarrusel);
 }
 
-/* Ejecuta el renderizado cuando el DOM esté listo */
+/* Ejecuta el renderizado y animación cuando el DOM esté listo */
 document.addEventListener("DOMContentLoaded", function() {
-    renderizarPropiedadesRecientes();
+    inicializarCarrusel();
 });
