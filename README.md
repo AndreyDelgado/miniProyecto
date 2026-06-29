@@ -32,12 +32,16 @@ Toda la aplicación opera de forma dinámica en el lado del cliente (Client-Side
 │   ├── componentes.css # Estilos de botones, inputs, tarjetas y avisos.
 │   ├── paginas.css     # Reglas específicas para vistas como el formulario de publicación.
 │   └── responsive.css  # Media queries para tablet y móvil.
-└── js/
-    ├── auth.js         # Lógica para el manejo de sesiones y validación de usuarios.
-    ├── index.js        # Renderizado de tarjetas recientes y control del carrusel.
-    ├── buscar.js       # Motor de filtrado y renderizado dinámico del catálogo.
-    ├── publicar.js     # Captura de datos, validación de UX y puente con localStorage.
-    └── propiedadesData.js # Arreglo de propiedades base del sistema.
+├── js/
+│   ├── auth.js         # Lógica para el manejo de sesiones y validación de usuarios.
+│   ├── index.js        # Renderizado de tarjetas recientes y control del carrusel.
+│   ├── buscar.js       # Motor de filtrado y renderizado dinámico del catálogo.
+│   ├── publicar.js     # Captura de datos, validación de UX y puente con localStorage.
+│   └── propiedadesData.js # Arreglo de propiedades base del sistema.
+├── /data
+│   └── propiedades.json # Propiedades guardadas en el JSON
+└── /assets
+    └── /images # Todas tus imágenes de propiedades
 ```
 
 ## Flujo de Datos (Persistencia Local)
