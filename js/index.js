@@ -68,7 +68,7 @@ function crearTarjetaPropiedad(propiedad) {
                 '<div class="property-tags">' + tagsHTML + '</div>' +
                 '<div class="property-footer">' +
                     '<span class="property-price">' + formatearPrecio(propiedad.precio) + ' <small>/mes</small></span>' +
-                    '<a href="#" class="btn-card">Ver más</a>' +
+                    '<a class="btn-card">Ver más</a>' +
                 '</div>' +
             '</div>' +
         '</article>'

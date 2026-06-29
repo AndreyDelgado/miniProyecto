@@ -201,7 +201,7 @@
    Teléfonos angostos (max-width: 420px)
    ========================= */
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
 
     .logo {
         font-size: 1.15rem;
@@ -216,5 +216,48 @@
     .btn-gold {
         width: 100%;
         text-align: center;
+    }
+
+    /* Forzamos a que la ventana del carrusel no genere desbordamientos raros */
+    .carousel-window {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* Cada tarjeta en el carrusel ocupará exactamente la totalidad del ancho móvil */
+    .carousel-window .property-card {
+        flex: 0 0 100% !important; /* El !important asegura romper el calc(25%) de escritorio */
+        max-width: 100%;
+        min-width: 0; /* Evita que anchos mínimos previos fuercen a la tarjeta a expandirse */
+    }
+
+    /* Ajustamos el contenedor del carrusel para evitar espacios muertos */
+    .carousel-window .listings-grid {
+        gap: 0px; /* Al ser individuales, removemos el gap para que el script calcule exacto */
+    }
+    
+    /* Permitir scroll vertical en el menú desplegable cuando esté activo */
+    .main-nav {
+        /* Restamos la altura estimada del header fijo para que encaje perfecto */
+        max-height: calc(100vh - 70px); 
+        overflow-y: auto; /* Activa el scroll si el contenido se desborda */
+        -webkit-overflow-scrolling: touch; /* Suaviza el desplazamiento en celulares */
+    }
+
+    /* Asegurar que el contenedor específico del formulario de sesión no bloquee el flujo */
+    .session-sidebar,
+    .session-form {
+        max-height: none; /* Eliminamos cualquier restricción de altura previa */
+        overflow: visible; /* Dejamos que el contenedor crezca para que .main-nav controle el scroll */
+    }
+
+    /* Reducir ligeramente los espaciados internos en móvil para ganar valioso espacio vertical */
+    .main-nav ul {
+        gap: 8px !important; /* Reduce la separación entre elementos del menú */
+        padding: 15px 0;
+    }
+
+    .session-form .form-group {
+        margin-bottom: 8px !important; /* Reduce el espacio entre campos (input/label) */
     }
 }
