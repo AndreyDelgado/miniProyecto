@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Selección de elementos del DOM (Dropdown y formularios)
+
+    // Selección de elementos del DOM
     const sessionDropdown = document.getElementById("session-dropdown");
     const dropLoginContainer = document.getElementById("drop-login-container");
     const dropRegisterContainer = document.getElementById("drop-register-container");
     const dropUserContainer = document.getElementById("drop-user-container");
     
-    // Elementos visuales del estado de sesión en el header
+    // Elementos visuales del estado de sesión
     const statusDot = document.getElementById("session-status-dot");
     const statusText = document.getElementById("session-status-text");
     const userNameDisplay = document.getElementById("user-name-display");
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const linkToLogin = document.getElementById("link-to-login");
     const btnLogout = document.getElementById("btn-logout");
 
-    // 2. Cerrar el menú desplegable al hacer clic fuera de él
+    // Cerrar el menú desplegable al hacer clic fuera de él
     document.addEventListener("click", (event) => {
         if (sessionDropdown && sessionDropdown.hasAttribute("open")) {
             if (!sessionDropdown.contains(event.target)) {
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 3. Alternar entre las vistas de Iniciar Sesión y Crear Cuenta
+    // Alternar entre las vistas de Iniciar Sesión y Crear Cuenta
     if (linkToRegister) {
         linkToRegister.addEventListener("click", (e) => {
             e.preventDefault();
@@ -44,12 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Función principal para verificar si hay una sesión activa
+    // Función principal para verificar si hay una sesión activa
     function checkSession() {
         const activeUser = JSON.parse(localStorage.getItem("aptify_session"));
         
         if (activeUser) {
-            // Si hay usuario: mostrar estado online y tarjeta de perfil
             if (statusDot) statusDot.className = "user-online";
             if (statusText) statusText.textContent = activeUser.nombre.split(" ")[0]; // Solo muestra el primer nombre
             
@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (userNameDisplay) userNameDisplay.textContent = activeUser.nombre;
             if (userEmailDisplay) userEmailDisplay.textContent = activeUser.correo;
         } else {
-            // Si NO hay usuario: mostrar estado offline y formulario de login
             if (statusDot) statusDot.className = "user-offline";
             if (statusText) statusText.textContent = "Ingresar";
             
@@ -70,13 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 5. Obtener la lista de usuarios registrados en localStorage
     function getUsers() {
         const users = localStorage.getItem("aptify_users");
         return users ? JSON.parse(users) : [];
     }
 
-    // 6. Lógica de Registro de nuevo usuario
+    // Lógica de Registro de nuevo usuario
     if (registerForm) {
         registerForm.addEventListener("submit", (e) => {
             e.preventDefault(); // Evita que la página se recargue
@@ -87,13 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const users = getUsers();
             
-            // Validar si el correo ya existe
             if (users.find(u => u.correo === email)) {
                 alert("Este correo ya está registrado.");
                 return;
             }
 
-            // Guardar nuevo usuario e iniciar sesión automáticamente
             const newUser = { nombre: name, correo: email, contrasena: pass };
             users.push(newUser);
             localStorage.setItem("aptify_users", JSON.stringify(users));
@@ -101,11 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
             
             checkSession();
             registerForm.reset();
-            if (sessionDropdown) sessionDropdown.removeAttribute("open"); // Cierra el menú al finalizar
+            if (sessionDropdown) sessionDropdown.removeAttribute("open");
         });
     }
 
-    // 7. Lógica de Inicio de Sesión
+    // Lógica de Inicio de Sesión
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -116,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const users = getUsers();
             const foundUser = users.find(u => u.correo === email);
 
-            // Validaciones de credenciales
             if (!foundUser) {
                 alert("No encontramos ninguna cuenta con este correo.");
                 return;
@@ -126,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Iniciar sesión y actualizar interfaz
             localStorage.setItem("aptify_session", JSON.stringify(foundUser));
             checkSession();
             loginForm.reset();
@@ -134,15 +128,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 8. Lógica de Cerrar Sesión
+    // Lógica de Cerrar Sesión
     if (btnLogout) {
         btnLogout.addEventListener("click", (e) => {
             e.preventDefault();
-            localStorage.removeItem("aptify_session"); // Elimina la sesión actual
+            localStorage.removeItem("aptify_session");
             checkSession();
             if (sessionDropdown) sessionDropdown.removeAttribute("open");
             
-            // Redirigir al inicio si el usuario está en otra página (ej. buscar o publicar)
+            // Redirigir al inicio
             const urlActual = window.location.pathname.toLowerCase();
             if (!urlActual.includes("index.html") && !urlActual.endsWith("/")) {
                 window.location.href = "index.html";
@@ -150,6 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 9. Ejecutar revisión inicial al cargar la página
+    // Ejecutar revisión inicial al cargar la página
     checkSession();
 });

@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Buscá apartamentos en alquiler en Costa Rica usando filtros por provincia, precio, tipo y estilo de vida.">
+    <meta name="description" content="Buscá apartamentos en alquiler en Costa Rica 
+    usando filtros por provincia, precio, tipo y estilo de vida.">
     <meta name="keywords" content="buscar apartamentos, alquiler Costa Rica, filtros, vivienda, Aptify">
     <meta name="author" content="Aptify">
-    <!-- CSS externo principal del sitio -->
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/paginas.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- Tipografías externas desde Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <title>Aptify | Buscar propiedades</title>
 </head>
-
 <body>
-
-    <!-- Encabezado principal fijo del sitio -->
+    <!-- Encabezado del sitio -->
     <header class="site-header">
         <div class="container header-content">
             <p class="logo">
                 <img src="assets/images/aptify-logo.png" alt="Logo Aptify" class="logo-img">
                 <strong>Aptify</strong>
             </p>
-            <!-- Checkbox oculto para controlar el menú hamburguesa sin JavaScript -->
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <!-- Botón visual del menú hamburguesa -->
+
             <label for="menu-toggle" class="menu-button">
                 <span></span>
                 <span></span>
@@ -63,10 +60,12 @@
                                             <label for="login-pass">Contraseña</label>
                                             <input type="password" id="login-pass" required placeholder="********">
                                         </div>
-                                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px;">Ingresar</button>
+                                        <button type="submit" class="btn-primary" style="width: 100%; 
+                                        margin-top: 8px;">Ingresar</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado); font-weight: bold;">Crear cuenta</a>
+                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado);
+                                        font-weight: bold;">Crear cuenta</a>
                                     </p>
                                 </div>
 
@@ -86,10 +85,12 @@
                                             <label for="reg-pass">Contraseña</label>
                                             <input type="password" id="reg-pass" required placeholder="Mínimo 8">
                                         </div>
-                                        <button type="submit" class="btn-gold" style="width: 100%; margin-top: 8px;">Registrarse</button>
+                                        <button type="submit" class="btn-gold" style="width: 100%;
+                                        margin-top: 8px;">Registrarse</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado); font-weight: bold;">Iniciar sesión</a>
+                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado);
+                                        font-weight: bold;">Iniciar sesión</a>
                                     </p>
                                 </div>
 
@@ -100,7 +101,8 @@
                                         <p id="user-email-display">correo@ejemplo.com</p>
                                     </div>
                                     <div class="session-buttons">
-                                        <button id="btn-logout" class="btn-secondary" style="width: 100%; margin-top: 16px;">Cerrar Sesión</button>
+                                        <button id="btn-logout" class="btn-secondary" 
+                                        style="width: 100%; margin-top: 16px;">Cerrar Sesión</button>
                                     </div>
                                 </div>
 
@@ -112,7 +114,7 @@
         </div>
     </header>
 
-    <!-- Ubicación actual (breadcrumb) -->
+    <!-- Ubicación actual -->
     <nav class="breadcrumb" aria-label="Ubicación actual">
         <div class="container">
             <a href="index.html">Inicio</a>
@@ -123,7 +125,7 @@
     <!-- Contenido principal -->
     <main>
 
-        <!-- Encabezado de la sección de búsqueda -->
+        <!-- Encabezado -->
         <section class="buscar-hero">
             <div class="container">
                 <span class="section-badge">Búsqueda con filtros</span>
@@ -135,7 +137,7 @@
             </div>
         </section>
 
-        <!-- Sección principal: filtros + resultados -->
+        <!-- Filtros y resultados -->
         <section class="buscar-section">
             <div class="container buscar-layout">
 
@@ -151,10 +153,11 @@
                     <div class="form-group">
                         <label for="filtroNombre">Buscar por nombre</label>
                         <input type="text" id="filtroNombre" placeholder="Ej: Moderno, Sky, etc..." autocomplete="off">
-                        <small id="errorNombre" class="form-hint" style="color: #dc3545; display: none;">Solo se permiten letras, espacios y guiones.</small>
+                        <small id="errorNombre" class="form-hint" style="color: #dc3545; 
+                        display: none;">Solo se permiten letras, espacios y guiones.</small>
                     </div>
 
-                    <!-- Filtro: Provincia -->
+                    <!-- Filtro Provincia -->
                     <div class="filtro-grupo">
                         <label for="filtroProvincia">Provincia</label>
                         <select id="filtroProvincia">
@@ -169,7 +172,7 @@
                         </select>
                     </div>
 
-                    <!-- Filtro: Tipo de propiedad -->
+                    <!-- Filtro Tipo de propiedad -->
                     <div class="filtro-grupo">
                         <label for="filtroTipo">Tipo de propiedad</label>
                         <select id="filtroTipo">
@@ -180,7 +183,7 @@
                         </select>
                     </div>
 
-                    <!-- Filtro: Precio máximo -->
+                    <!-- Filtro Precio máximo -->
                     <div class="filtro-grupo">
                         <label for="filtroPrecio">Precio máximo (₡)</label>
                         <select id="filtroPrecio">
@@ -193,7 +196,7 @@
                         </select>
                     </div>
 
-                    <!-- Filtro: Habitaciones mínimas -->
+                    <!-- Filtro Habitaciones mínimas -->
                     <div class="filtro-grupo">
                         <label for="filtroHabitacion">Habitaciones (mínimo)</label>
                         <select id="filtroHabitacion">
@@ -205,7 +208,7 @@
                         </select>
                     </div>
 
-                    <!-- Filtro: Estilo de vida / etiqueta -->
+                    <!-- Filtro Estilo de vida -->
                     <div class="filtro-grupo">
                         <label for="filtroEtiqueta">Estilo de vida</label>
                         <select id="filtroEtiqueta">
@@ -228,15 +231,12 @@
                     </div>
                 </aside>
 
-                <!-- Área de resultados -->
                 <div class="resultados-area">
 
-                    <!-- Barra de estado con el conteo de resultados -->
                     <div class="resultados-barra">
                         <p id="mensajePropiedades" class="resultados-mensaje">
                             Cargando propiedades disponibles...
                         </p>
-                        <!-- Estados de disponibilidad para referencia visual -->
                         <div class="estados-ref">
                             <span class="estado-disponible">&#9679; Disponible</span>
                             <span class="estado-inactivo">&#9679; No disponible</span>
@@ -289,7 +289,6 @@
         </p>
     </footer>
 
-    <!-- Lógica de filtros y renderizado de buscar.html -->
     <script src="js/buscar.js"></script>
     <script src="js/auth.js"></script>
 

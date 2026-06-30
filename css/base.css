@@ -1,23 +1,23 @@
 /* =========================
-   Reset, variables de color y tipografía,
-   y utilidades generales del sitio.
+    Reset, variables de color y tipografía,
+    y utilidades generales del sitio.
    ========================= */
- 
+
 /* ── RESET ── */
- 
+
 /* Elimina márgenes y espacios automáticos del navegador */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
- 
+
 /* Configuración general del documento */
 html {
     font-size: 16px;
     scroll-behavior: smooth;
 }
- 
+
 /* Estilo general del sitio */
 body {
     font-family: 'DM Sans', Arial, Helvetica, sans-serif;
@@ -27,33 +27,32 @@ body {
     /* Espacio para que el header fijo no tape el contenido */
     padding-top: 70px;
 }
- 
+
 /* Multimedia adaptable */
 img,
 video,
 iframe {
     max-width: 100%;
 }
- 
+
 /* Evita deformación y espacios inferiores en imágenes */
 img {
     height: auto;
     display: block;
 }
- 
+
 /* Enlaces sin subrayado */
 a {
     text-decoration: none;
 }
- 
+
 /* Viñetas dentro del bloque */
 ul {
     list-style-position: inside;
 }
- 
-/* ── VARIABLES DE COLOR Y TIPOGRAFÍA ──
-   Paleta principal del sitio */
- 
+
+/* ── VARIABLES DE COLOR Y TIPOGRAFÍA ── */
+
 :root {
     --color-fondo:        #1a1a18;
     --color-superficie:   #222220;
@@ -71,21 +70,21 @@ ul {
     --radio-lg:           20px;
     --radio-pill:         100px;
 }
- 
+
 /* ── UTILIDADES GENERALES ── */
- 
-/* Contenedor centrado reutilizable */
+
+/* Contenedor centrado */
 .container {
     width: min(90%, 1200px);
     margin: 0 auto;
 }
- 
+
 /* Separación general entre secciones */
 section,
 aside {
     padding: 64px 0;
 }
- 
+
 /* Estilo base para títulos */
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-texto);
@@ -93,14 +92,14 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-display);
     line-height: 1.2;
 }
- 
+
 /* Separación entre párrafos */
 p {
     margin-bottom: 15px;
     color: var(--color-texto-suave);
 }
- 
-/* Etiqueta superior de sección (eyebrow) */
+
+/* Etiqueta superior de sección */
 .section-eyebrow {
     display: inline-block;
     font-size: 0.75rem;
@@ -110,8 +109,8 @@ p {
     color: var(--color-dorado);
     margin-bottom: 10px;
 }
- 
-/* Badge de sección (semana / módulo) */
+
+/* Badge de sección */
 .section-badge {
     display: inline-block;
     background-color: rgba(201, 168, 76, 0.12);

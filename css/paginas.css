@@ -1,12 +1,12 @@
 /* =========================
-   Estilos específicos de cada página:
-   index.html → hero, barra de búsqueda, cómo funciona, about, locations, cta-banner
-   buscar.html → hero, panel de filtros, área de resultados
-   acceso.html → formularios de login y registro
+    Estilos específicos de cada página:
+    index.html → hero, barra de búsqueda, cómo funciona, about, locations, cta-banner
+    buscar.html → hero, panel de filtros, área de resultados
+    publicar.html → formularios de login y registro
    ========================= */
 
 /* =========================
-   INDEX – HERO
+    INDEX – HERO
    ========================= */
 
 .hero {
@@ -124,7 +124,7 @@
 }
 
 /* =========================
-   INDEX – BARRA DE BÚSQUEDA
+    INDEX – BARRA DE BÚSQUEDA
    ========================= */
 
 /* Contenedor general de la barra */
@@ -198,7 +198,7 @@
 }
 
 /* =========================
-   INDEX – CÓMO FUNCIONA
+    INDEX – CÓMO FUNCIONA
    ========================= */
 
 .how-section {
@@ -244,7 +244,7 @@
 }
 
 /* =========================
-   INDEX – SOBRE APTIFY
+    INDEX – SOBRE APTIFY
    ========================= */
 
 .about-section {
@@ -335,7 +335,7 @@
 }
 
 /* =========================
-   INDEX – ZONAS POPULARES
+    INDEX – ZONAS POPULARES
    ========================= */
 
 .locations-section {
@@ -372,7 +372,7 @@
 }
 
 /* =========================
-   INDEX – BANNER CTA
+    INDEX – BANNER CTA
    ========================= */
 
 .cta-banner {
@@ -406,7 +406,7 @@
 }
 
 /* =========================
-   BUSCAR – HERO Y LAYOUT
+    BUSCAR – HERO Y LAYOUT
    ========================= */
 
 /* Hero de la página de búsqueda */
@@ -446,7 +446,7 @@
 }
 
 /* =========================
-   BUSCAR – PANEL DE FILTROS
+    BUSCAR – PANEL DE FILTROS
    ========================= */
 
 /* Contenedor del panel lateral de filtros */
@@ -553,7 +553,7 @@
 }
 
 /* =========================
-   BUSCAR – ÁREA DE RESULTADOS
+    BUSCAR – ÁREA DE RESULTADOS
    ========================= */
 
 /* Área derecha donde se muestran las tarjetas */
@@ -603,7 +603,7 @@
 }
 
 /* =========================
-   ACCESO – LOGIN Y REGISTRO
+    ACCESO – LOGIN Y REGISTRO
    ========================= */
 
 /* Sección que ocupa toda la altura visible */
@@ -706,7 +706,7 @@
 }
 
 /* =========================
-   SECCIÓN DE PUBLICAR PROPIEDAD
+    SECCIÓN DE PUBLICAR PROPIEDAD
    ========================= */
 
 .publish-section {

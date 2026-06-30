@@ -1,12 +1,5 @@
-/* =========================
-    Maneja los filtros y el renderizado dinámico
-    de propiedades en la página de Buscar
-   ========================= */
-
-// NUEVO: Declaramos el arreglo vacío que se llenará con el Fetch
 let propiedades = [];
 
-/* NUEVO: Carga los datos desde el archivo JSON */
 function cargarPropiedadesBase() {
     return fetch("data/propiedades.json")
         .then(function(response) {
@@ -16,19 +9,18 @@ function cargarPropiedadesBase() {
             return response.json();
         })
         .then(function(data) {
-            propiedades = data; // Asignamos los datos cargados a nuestra variable global
+            propiedades = data;
         })
         .catch(function(error) {
             console.error("Error en Fetch:", error);
         });
 }
 
-/* Recupera las propiedades publicadas por el usuario y las combina */
 function combinarPropiedadesConLocalStorage() {
     const propiedadesLocales = JSON.parse(localStorage.getItem("aptify_propiedades")) || [];
 
     propiedadesLocales.forEach(function(propLocal) {
-        // Evitamos duplicar la propiedad si el usuario recarga la página varias veces
+        // Evita duplicas al recargar
         const yaExiste = propiedades.some(function(p) {
             return p.id === propLocal.id;
         });
@@ -39,21 +31,19 @@ function combinarPropiedadesConLocalStorage() {
     });
 }
 
-/* Íconos de etiqueta para cada característica */
+/* Íconos de etiqueta de cada característica */
 const iconosEtiqueta = {
-    "Mascotas":     "&#128062;",
-    "Cochera":      "&#128663;",
-    "Familias":     "&#128106;",
-    "Estudiantes":  "&#127891;",
-    "Parejas":      "&#128145;"
+    "Mascotas": "&#128062;",
+    "Cochera": "&#128663;",
+    "Familias": "&#128106;",
+    "Estudiantes": "&#127891;",
+    "Parejas": "&#128145;"
 };
 
-/* Formatea un número como precio en colones con separador de miles */
 function formatearPrecio(precio) {
     return "₡" + precio.toLocaleString("es-CR");
 }
 
-/* Determina el estado de disponibilidad de la propiedad */
 function obtenerEstado(propiedad) {
     if (!propiedad.activa) {
         return { texto: "No disponible", clase: "estado-inactivo" };
@@ -61,7 +51,6 @@ function obtenerEstado(propiedad) {
     return { texto: "Disponible", clase: "estado-disponible" };
 }
 
-/* Construye el HTML de una tarjeta de búsqueda */
 function crearTarjetaBusqueda(propiedad) {
     const estado = obtenerEstado(propiedad);
 
@@ -89,7 +78,8 @@ function crearTarjetaBusqueda(propiedad) {
                 '<div class="property-tags">' + tagsHTML + '</div>' +
                 '<div class="property-footer" style="align-items: flex-end;">' +
                     '<div>' +
-                        '<span style="display:block; font-size: 0.75rem; color: var(--color-texto-suave); margin-bottom: 2px;">Depósito: ' + (propiedad.deposito ? formatearPrecio(propiedad.deposito) : 'Consultar') + '</span>' +
+                        '<span style="display:block; font-size: 0.75rem; color: var(--color-texto-suave); margin-bottom: 2px;">Depósito: ' + (propiedad.deposito ? 
+                        formatearPrecio(propiedad.deposito) : 'Consultar') + '</span>' +
                         '<span class="property-price">' + formatearPrecio(propiedad.precio) + ' <small>/mes</small></span>' +
                     '</div>' +
                     '<a href="#" class="btn-card' + (!propiedad.activa ? ' btn-card-disabled' : '') + '">Ver más</a>' +
@@ -99,34 +89,26 @@ function crearTarjetaBusqueda(propiedad) {
     );
 }
 
-/* Aplica los filtros seleccionados y re-renderiza los resultados */
 function aplicarFiltros() {
-    /* Lee los valores actuales de cada filtro */
-    const filtroNombre     = document.getElementById("filtroNombre").value.toLowerCase().trim();
-    const filtroProvincia  = document.getElementById("filtroProvincia").value;
-    const filtroTipo       = document.getElementById("filtroTipo").value;
-    const filtroPrecio     = document.getElementById("filtroPrecio").value;
-    const filtroEtiqueta   = document.getElementById("filtroEtiqueta").value;
+    const filtroNombre = document.getElementById("filtroNombre").value.toLowerCase().trim();
+    const filtroProvincia = document.getElementById("filtroProvincia").value;
+    const filtroTipo = document.getElementById("filtroTipo").value;
+    const filtroPrecio = document.getElementById("filtroPrecio").value;
+    const filtroEtiqueta = document.getElementById("filtroEtiqueta").value;
     const filtroHabitacion = document.getElementById("filtroHabitacion").value;
 
-    /* Filtra el arreglo de propiedades según los criterios */
     const resultado = propiedades.filter(function(p) {
-        /* Filtro por nombre */
+
         if (filtroNombre && !p.nombre.toLowerCase().includes(filtroNombre)) return false;
 
-        /* Filtro por provincia */
         if (filtroProvincia && p.provincia !== filtroProvincia) return false;
 
-        /* Filtro por tipo de propiedad */
         if (filtroTipo && p.tipo !== filtroTipo) return false;
 
-        /* Filtro por precio máximo */
         if (filtroPrecio && p.precio > Number(filtroPrecio)) return false;
 
-        /* Filtro por etiqueta de estilo de vida */
         if (filtroEtiqueta && !p.etiquetas.includes(filtroEtiqueta)) return false;
 
-        /* Filtro por mínimo de habitaciones */
         if (filtroHabitacion && p.habitaciones < Number(filtroHabitacion)) return false;
 
         return true;
@@ -135,16 +117,13 @@ function aplicarFiltros() {
     renderizarResultados(resultado);
 }
 
-/* Inserta las tarjetas filtradas en el contenedor y actualiza el contador */
 function renderizarResultados(lista) {
     const contenedor = document.getElementById("contenedorPropiedades");
     const mensaje    = document.getElementById("mensajePropiedades");
 
-    /* Actualiza el texto del contador de resultados */
     mensaje.textContent = "Mostrando " + lista.length + " propiedad(es).";
 
     if (lista.length === 0) {
-        /* Muestra el estado vacío cuando no hay coincidencias */
         contenedor.innerHTML =
             '<div class="empty-state">' +
                 '<h3>Sin resultados</h3>' +
@@ -156,64 +135,57 @@ function renderizarResultados(lista) {
     contenedor.innerHTML = lista.map(crearTarjetaBusqueda).join("");
 }
 
-/* NUEVO: Valida y limpia el texto mientras el usuario escribe */
+/* Valida y limpia el texto mientras el usuario escribe */
 function validarEntradaNombre(evento) {
     const input = evento.target;
     const mensajeError = document.getElementById("errorNombre");
     
-    // Permitimos letras (incluyendo tildes y eñes), espacios y guiones medios/bajos. 
-    // Cualquier número o carácter especial como @, $, *, etc., será detectado.
     const regexPermitido = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s-_]*$/;
 
     if (!regexPermitido.test(input.value)) {
-        // Mostramos el mensaje de error visual
+        // Muestra el mensaje de error visual
         if (mensajeError) mensajeError.style.display = "block";
         
-        // Removemos el último carácter inválido introducido
+        // Remueve el último carácter inválido introducido
         input.value = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s-_]/g, "");
     } else {
-        // Ocultamos el mensaje si todo está correcto
+        // Oculta el mensaje si todo está correcto
         if (mensajeError) mensajeError.style.display = "none";
     }
 
-    // Ejecutamos el filtro inmediatamente letra por letra
-    aplicarFiltros();
+    aplicarFiltros(); // Letra por letra
 }
 
-/* Limpia todos los filtros y muestra todas las propiedades de nuevo */
 function limpiarFiltros() {
     document.getElementById("filtroNombre").value = "";
     const mensajeError = document.getElementById("errorNombre");
     if (mensajeError) mensajeError.style.display = "none";
 
-    document.getElementById("filtroProvincia").value  = "";
-    document.getElementById("filtroTipo").value       = "";
-    document.getElementById("filtroPrecio").value     = "";
-    document.getElementById("filtroEtiqueta").value   = "";
+    document.getElementById("filtroProvincia").value = "";
+    document.getElementById("filtroTipo").value = "";
+    document.getElementById("filtroPrecio").value = "";
+    document.getElementById("filtroEtiqueta").value = "";
     document.getElementById("filtroHabitacion").value = "";
 
     aplicarFiltros();
 }
 
-/* Inicializa la página cuando el DOM esté listo */
 document.addEventListener("DOMContentLoaded", function() {
-    // MODIFICADO: Esperamos a que el Fetch termine antes de renderizar nada
     cargarPropiedadesBase().then(function() {
         combinarPropiedadesConLocalStorage();
         aplicarFiltros();
     });
 
-    // NUEVO: Escucha el evento 'input' en tiempo real para filtrar y validar al escribir
+    // Tiempo real para filtrar y validar al escribir
     const inputNombre = document.getElementById("filtroNombre");
     if (inputNombre) {
         inputNombre.addEventListener("input", validarEntradaNombre);
     }
 
-    /* Asigna los eventos de cambio (se mantienen igual) */
-    document.getElementById("filtroProvincia").addEventListener("change",  aplicarFiltros);
-    document.getElementById("filtroTipo").addEventListener("change",       aplicarFiltros);
-    document.getElementById("filtroPrecio").addEventListener("change",     aplicarFiltros);
-    document.getElementById("filtroEtiqueta").addEventListener("change",   aplicarFiltros);
+    document.getElementById("filtroProvincia").addEventListener("change", aplicarFiltros);
+    document.getElementById("filtroTipo").addEventListener("change", aplicarFiltros);
+    document.getElementById("filtroPrecio").addEventListener("change", aplicarFiltros);
+    document.getElementById("filtroEtiqueta").addEventListener("change", aplicarFiltros);
     document.getElementById("filtroHabitacion").addEventListener("change", aplicarFiltros);
     document.getElementById("btnLimpiarFiltros").addEventListener("click", limpiarFiltros);
 });

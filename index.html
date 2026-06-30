@@ -9,7 +9,7 @@
     <meta name="keywords" content="apartamentos, alquiler, Costa Rica, 
     vivienda, mascotas, cochera, familias, estudiantes">
     <meta name="author" content="Aptify">
-    <!-- CSS externo principal del sitio -->
+    <!-- CSS del sitio -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
@@ -21,16 +21,15 @@
 </head>
 <body>
 
-    <!-- Encabezado principal fijo del sitio -->
+    <!-- Encabezado del sitio -->
     <header class="site-header">
         <div class="container header-content">
             <p class="logo">
                 <img src="assets/images/aptify-logo.png" alt="Logo Aptify" class="logo-img">
                 <strong>Aptify</strong>
             </p>
-            <!-- Checkbox oculto para controlar el menú hamburguesa -->
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <!-- Botón visual del menú hamburguesa -->
+            <!-- Menú hamburguesa -->
             <label for="menu-toggle" class="menu-button">
                 <span></span>
                 <span></span>
@@ -66,10 +65,12 @@
                                             <label for="login-pass">Contraseña</label>
                                             <input type="password" id="login-pass" required placeholder="********">
                                         </div>
-                                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px;">Ingresar</button>
+                                        <button type="submit" class="btn-primary" style="width: 100%; 
+                                        margin-top: 8px;">Ingresar</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado); font-weight: bold;">Crear cuenta</a>
+                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado); 
+                                        font-weight: bold;">Crear cuenta</a>
                                     </p>
                                 </div>
 
@@ -89,10 +90,12 @@
                                             <label for="reg-pass">Contraseña</label>
                                             <input type="password" id="reg-pass" required placeholder="Mínimo 8">
                                         </div>
-                                        <button type="submit" class="btn-gold" style="width: 100%; margin-top: 8px;">Registrarse</button>
+                                        <button type="submit" class="btn-gold" style="width: 100%; 
+                                        margin-top: 8px;">Registrarse</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado); font-weight: bold;">Iniciar sesión</a>
+                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado); 
+                                        font-weight: bold;">Iniciar sesión</a>
                                     </p>
                                 </div>
 
@@ -103,7 +106,8 @@
                                         <p id="user-email-display">correo@ejemplo.com</p>
                                     </div>
                                     <div class="session-buttons">
-                                        <button id="btn-logout" class="btn-secondary" style="width: 100%; margin-top: 16px;">Cerrar Sesión</button>
+                                        <button id="btn-logout" class="btn-secondary" style="width: 100%; 
+                                        margin-top: 16px;">Cerrar Sesión</button>
                                     </div>
                                 </div>
 
@@ -123,10 +127,9 @@
         </div>
     </nav>
 
-    <!-- Contenido principal -->
     <main>
 
-        <!-- Sección hero con columnas flotantes -->
+        <!-- Sección hero -->
         <section id="hero" class="hero">
             <div class="container hero-content">
                 <div class="hero-text">
@@ -137,7 +140,6 @@
                         apartamentos de alquiler en Costa Rica. Filtra por provincia, presupuesto
                         y estilo de vida, y encuentra exactamente lo que necesitas.
                     </p>
-                    <!-- Jerarquía visual de acciones -->
                     <div class="hero-actions">
                         <a class="btn-primary" href="buscar.html">
                             Ver propiedades
@@ -146,7 +148,6 @@
                             Conocer la plataforma
                         </a>
                     </div>
-                    <!-- Caja informativa relativa con etiqueta absoluta -->
                     <div class="hero-info">
                         <span class="info-label">Nuevo</span>
                         <p>
@@ -158,9 +159,9 @@
                         </button>
                     </div>
                 </div>
-                <!-- Imagen representativa del hero -->
                 <figure class="hero-image">
-                    <img src="assets/images/hero-apartamentos.png" alt="Apartamento moderno de alquiler en Costa Rica">
+                    <img src="assets/images/hero-apartamentos.png" 
+                    alt="Apartamento moderno de alquiler en Costa Rica">
                     <figcaption>
                         Encuentra tu hogar ideal con los filtros de Aptify.
                     </figcaption>
@@ -169,7 +170,7 @@
             
         </section>
 
-        <!-- Estadísticas generales de la plataforma -->
+        <!-- Estadísticas generales -->
         <section class="stats-section">
             <div class="container stats-grid">
                 <div class="stat-card">
@@ -191,7 +192,7 @@
             </div>
         </section>
 
-        <!-- Propiedades recientes destacadas -->
+        <!-- Propiedades destacadas -->
         <section class="listings-section">
             <div class="container">
                 <span class="section-eyebrow">Disponible ahora</span>
@@ -209,7 +210,7 @@
             </div>
         </section>
 
-        <!-- Cómo funciona la plataforma -->
+        <!-- ¿Cómo funciona? -->
         <section id="como-funciona" class="how-section">
             <div class="container">
                 <span class="section-eyebrow">¿Cómo funciona?</span>
@@ -237,12 +238,12 @@
             </div>
         </section>
 
-        <!-- Por qué elegir Aptify -->
+        <!-- ¿Por qué Aptify? -->
         <section id="sobre-aptify" class="about-section">
             <div class="container about-content">
-                <!-- Imagen representativa -->
                 <figure class="about-image">
-                    <img src="assets/images/about-aptify.png" alt="Persona buscando apartamento desde su computadora">
+                    <img src="assets/images/about-aptify.png" 
+                    alt="Persona buscando apartamento desde su computadora">
                     <figcaption>
                         Aptify simplifica la búsqueda de alquileres en Costa Rica.
                     </figcaption>
@@ -296,7 +297,7 @@
             </div>
         </section>
 
-        <!-- Banner de llamada a acción: publicar propiedad -->
+        <!-- Banner CTA: publicar propiedad -->
         <section class="cta-banner">
             <div class="container cta-content">
                 <div class="cta-text">

@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const publishForm = document.getElementById("publish-form");
     const authWarning = document.getElementById("auth-warning");
-    let idEdicion = null; // Variable para saber si estamos creando o editando
+    let idEdicion = null; // Variable para saber si está creando o editando
 
-    // ==========================================
-    // 1. VERIFICACIÓN DE SESIÓN EN TIEMPO REAL
-    // ==========================================
     function verificarAcceso() {
         const activeUser = JSON.parse(localStorage.getItem("aptify_session"));
         
@@ -18,10 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Ejecutar inmediatamente al cargar la página
     verificarAcceso();
 
-    // Conectar con los formularios de sesión para actualizar sin recargar
+    // Conecta con los formularios de sesión para actualizar
     const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
     const btnLogout = document.getElementById("btn-logout");
@@ -44,22 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================
-    // 2. LÓGICA DE PUBLICACIÓN DE PROPIEDAD
-    // ==========================================
+    // Lógica de publicación de propiedad
     if (publishForm) {
         publishForm.addEventListener("submit", (e) => {
             e.preventDefault();
             
             const activeUser = JSON.parse(localStorage.getItem("aptify_session"));
             
-            // Seguridad extra por si intentan forzar el envío sin sesión
             if (!activeUser) {
                 alert("Debes iniciar sesión para publicar.");
                 return; 
             }
 
-            // BLOQUEO DE ENVÍO SI HAY ERRORES MATEMÁTICOS O DE LONGITUD
+            // Bloqueo de envío si hay errores matemáticos o de longitud
             const tituloValido = document.getElementById("prop-title").value.trim().length >= 10;
             const precioValido = Number(document.getElementById("prop-price").value) >= 50000;
             const metrosValido = Number(document.getElementById("prop-metros").value) >= 10;
@@ -73,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return; 
             }
             
-            // Construir el arreglo de etiquetas seleccionadas
             const etiquetasSeleccionadas = [];
             const tagMascotas = document.getElementById("tag-mascotas");
             const tagCochera = document.getElementById("tag-cochera");
@@ -89,9 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (tagEstudiantes && tagEstudiantes.checked) etiquetasSeleccionadas.push("Estudiantes");
             if (tagParejas && tagParejas.checked) etiquetasSeleccionadas.push("Parejas");
 
-            // Recopilar todos los datos estructurados exactamente como los necesita buscar.js
             const nuevaPropiedad = {
-                id: idEdicion ? idEdicion : Date.now(), // Si estamos editando, mantenemos el ID original
+                id: idEdicion ? idEdicion : Date.now(), // Si se edita, mantiene el ID original
                 nombre: document.getElementById("prop-title").value.trim(),
                 precio: Number(document.getElementById("prop-price").value),
                 deposito: Number(document.getElementById("prop-deposito").value),
@@ -103,18 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 metros: Number(document.getElementById("prop-metros").value),
                 etiquetas: etiquetasSeleccionadas,
                 imagen: document.getElementById("prop-image").value.trim(),
-                activa: estaActiva, // Aplicamos el estado seleccionado
+                activa: estaActiva,
                 descripcion: document.getElementById("prop-desc").value.trim(),
                 propietario: activeUser.nombre,
                 correoPropietario: activeUser.correo,
-                // La fecha la definimos más abajo dependiendo si es nueva o editada
             };
 
-            // Traer las propiedades publicadas anteriormente (o un arreglo vacío)
+            // Propiedades publicadas anteriormente
             let propiedades = JSON.parse(localStorage.getItem("aptify_propiedades")) || [];
             
             if (idEdicion) {
-                // MODO EDICIÓN: Actualizamos la propiedad existente
+                // Actualiza la propiedad existente
                 const index = propiedades.findIndex(p => p.id === idEdicion);
                 if (index !== -1) {
                     nuevaPropiedad.fechaPublicacion = propiedades[index].fechaPublicacion; // Mantiene fecha original
@@ -122,48 +112,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 alert("¡Los cambios se han guardado con éxito!");
             } else {
-                // MODO CREACIÓN: Añadimos una nueva
+                // Añade una nueva
                 nuevaPropiedad.fechaPublicacion = new Date().toLocaleDateString();
                 propiedades.push(nuevaPropiedad);
                 alert("¡Éxito! Tu propiedad ha sido publicada en Aptify.");
             }
             
-            // Guardar nuevamente en el almacenamiento
             localStorage.setItem("aptify_propiedades", JSON.stringify(propiedades));
 
-            // Limpiar formulario y reiniciar modo
             publishForm.reset();
             idEdicion = null;
             document.querySelector("#publish-form button[type='submit']").textContent = "Publicar Propiedad";
             
-            // Actualizar la lista de abajo para que el usuario vea los cambios inmediatamente
             renderizarMisPropiedades();
             
         });
     }
 
-    // ==========================================
-    // 3. LIMPIEZA CONTROLADA (Rúbrica)
-    // ==========================================
     const btnLimpiar = document.getElementById("btn-limpiar");
     if (btnLimpiar && publishForm) {
         btnLimpiar.addEventListener("click", () => {
-            // Confirmación visual antes de limpiar
             if (confirm("¿Estás seguro de que deseas borrar todos los datos ingresados en el formulario?")) {
                 publishForm.reset();
                 
                 idEdicion = null;
                 document.querySelector("#publish-form button[type='submit']").textContent = "Publicar Propiedad";
                 
-                // Mensaje de éxito al limpiar
                 alert("El formulario ha sido limpiado.");
             }
         });
     }
 
-    // ==========================================
-    // 4. GESTIÓN Y ELIMINACIÓN DE REGISTROS (Rúbrica)
-    // ==========================================
+    // Gestión y eliminación de registros
     const gestionSection = document.getElementById("gestion-propiedades");
     const listaMisPropiedades = document.getElementById("lista-mis-propiedades");
 
@@ -176,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const propiedades = JSON.parse(localStorage.getItem("aptify_propiedades")) || [];
         
-        // Filtrar solo las propiedades que pertenecen a este usuario
         const misPropiedades = propiedades.filter(p => p.correoPropietario === activeUser.correo);
 
         if (misPropiedades.length === 0) {
@@ -184,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Renderizar cada propiedad con sus botones de editar y eliminar
+        // Renderiza cada propiedad con sus botones de editar y eliminar
         listaMisPropiedades.innerHTML = misPropiedades.map(prop => `
             <div style="background-color: var(--color-superficie-2); border: 1px solid var(--color-borde); padding: 16px; border-radius: var(--radio-sm); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                 <div>
@@ -210,39 +189,31 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
     }
 
-    // Función global para eliminar desde el HTML
     window.eliminarPropiedad = function(idAEliminar) {
         if (confirm("¿Estás seguro de que deseas eliminar permanentemente esta publicación?")) {
             let propiedades = JSON.parse(localStorage.getItem("aptify_propiedades")) || [];
             
-            // Filtrar quitando el ID que queremos eliminar
+            // Filtra quitando el ID que se quiere eliminar
             propiedades = propiedades.filter(p => p.id !== idAEliminar);
             
-            // Guardar el nuevo arreglo en el navegador
+            // Guarda el nuevo arreglo
             localStorage.setItem("aptify_propiedades", JSON.stringify(propiedades));
             
-            // Actualizar la vista inmediatamente
             renderizarMisPropiedades();
             alert("La propiedad ha sido eliminada con éxito.");
         }
     };
 
-    // Agregar la llamada a renderizarMisPropiedades dentro de la verificación de sesión
-    // Modificamos la función existente de verificarAcceso para que cargue la lista
     const originalVerificarAcceso = verificarAcceso;
     verificarAcceso = function() {
         originalVerificarAcceso();
         renderizarMisPropiedades();
     };
     
-    // Forzamos un renderizado inicial si ya hay sesión
     renderizarMisPropiedades();
 
-    // ==========================================
-    // 5. VALIDACIÓN EN TIEMPO REAL (Rúbrica)
-    // ==========================================
+    // Validación en tiempo real
     
-    // Selección de elementos
     const inputTitle = document.getElementById("prop-title");
     const errorTitle = document.getElementById("error-title");
 
@@ -264,19 +235,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputDeposito = document.getElementById("prop-deposito");
     const errorDeposito = document.getElementById("error-deposito");
 
-    // Función auxiliar para aplicar estilos de error/éxito
+    // Estilos de error/éxito
     function aplicarEstiloValidacion(input, errorElement, esInvalido) {
         if (esInvalido) {
             errorElement.style.display = "block";
-            input.style.borderColor = "#dc2626"; // Rojo error
+            input.style.borderColor = "#dc2626";
             input.style.backgroundColor = "rgba(220, 38, 38, 0.05)";
         } else {
             errorElement.style.display = "none";
-            input.style.borderColor = "#3bba6c"; // Verde éxito
+            input.style.borderColor = "#3bba6c";
             input.style.backgroundColor = "var(--color-superficie-2)";
         }
         
-        // Si el campo está vacío, lo regresamos a su estado original
+        // Si el campo está vacío, se regresa a su estado original
         if (input.value.trim() === "") {
             errorElement.style.display = "none";
             input.style.borderColor = "var(--color-borde)";
@@ -284,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Validar Título (Mínimo 10 caracteres)
+    // Validar Título
     if (inputTitle) {
         inputTitle.addEventListener("input", (e) => {
             const texto = e.target.value.trim();
@@ -293,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Validar Precio (Mínimo 50,000)
+    // Validar Precio
     if (inputPrice) {
         inputPrice.addEventListener("input", (e) => {
             const valor = Number(e.target.value);
@@ -302,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Validar Metros (Mínimo 10m2)
+    // Validar Metros
     if (inputMetros) {
         inputMetros.addEventListener("input", (e) => {
             const valor = Number(e.target.value);
@@ -311,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Validar Cantón (Mínimo 3 caracteres)
+    // Validar Cantón
     if (inputCanton) {
         inputCanton.addEventListener("input", (e) => {
             const texto = e.target.value.trim();
@@ -320,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Validar Habitaciones (No puede ser 0 o negativo)
+    // Validar Habitaciones
     if (inputRooms) {
         inputRooms.addEventListener("input", (e) => {
             const valor = Number(e.target.value);
@@ -329,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Validar Baños (No puede ser 0 o negativo)
+    // Validar Baños
     if (inputBaths) {
         inputBaths.addEventListener("input", (e) => {
             const valor = Number(e.target.value);
@@ -346,11 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 }
 
-    // ==========================================
-    // 6. CAMPO AUTOCALCULADO (Depósito Sugerido)
-    // ==========================================
-    
-    // El inputPrice e inputMetros ya los seleccionamos en la sección 5
+    // Campo autocalculado (Depósito Sugerido)
     const inputTipo = document.getElementById("prop-tipo");
     const calcDeposito = document.getElementById("calc-deposito");
 
@@ -360,46 +327,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const tipo = inputTipo ? inputTipo.value : "";
 
         if (precio > 0) {
-            let multiplicador = 1.0; // Representa el 100% del mes base
+            let multiplicador = 1.0; // 100% del mes base
 
-            // 1. Condicional por Tipo de Propiedad
+            // Condicional por tipo de propiedad
             if (tipo === "Estudio") {
                 multiplicador -= 0.10; // -10% para estudios
             } else if (tipo === "Casa") {
                 multiplicador += 0.15; // +15% para casas
             }
 
-            // 2. Condicional por Tamaño (Más de 200m2 = +10%)
+            // Condicional por tamaño (más de 200m2 = +10%)
             if (metros >= 200) {
                 multiplicador += 0.10; 
             }
 
-            // Calculamos el total y lo redondeamos para que no den decimales feos
+            // Calcula el total y lo redondea para que no den decimales feos
             const depositoFinal = Math.round(precio * multiplicador);
             
             calcDeposito.textContent = "₡" + depositoFinal.toLocaleString("es-CR");
         } else {
-            // Si no han puesto precio válido, vuelve a 0
+            // Si no ha puesto precio válido, vuelve a 0
             calcDeposito.textContent = "₡0";
         }
     }
 
-    // Escuchamos los eventos en los 3 campos involucrados para que reaccione al instante
     if (inputPrice) inputPrice.addEventListener("input", calcularDepositoSugerido);
     if (inputMetros) inputMetros.addEventListener("input", calcularDepositoSugerido);
     
-    // Para el select de "Tipo" usamos 'change' en lugar de 'input'
     if (inputTipo) inputTipo.addEventListener("change", calcularDepositoSugerido);
 
-    // ==========================================
-    // 7. FUNCIÓN PARA EDITAR PROPIEDAD (Rúbrica)
-    // ==========================================
+    // Función para editar propiedad
     window.editarPropiedad = function(id) {
         const propiedades = JSON.parse(localStorage.getItem("aptify_propiedades")) || [];
         const prop = propiedades.find(p => p.id === id);
         if (!prop) return;
 
-        // Llenamos todos los campos con los datos guardados
+        // Llena todos los campos con los datos guardados
         document.getElementById("prop-title").value = prop.nombre;
         document.getElementById("prop-price").value = prop.precio;
         if(document.getElementById("prop-deposito")) document.getElementById("prop-deposito").value = prop.deposito || prop.precio;
@@ -413,21 +376,18 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("prop-image").value = prop.imagen;
         document.getElementById("prop-desc").value = prop.descripcion;
 
-        // Llenamos los checkboxes de estilo de vida
+        // Llena los checkboxes
         document.getElementById("tag-mascotas").checked = prop.etiquetas.includes("Mascotas");
         document.getElementById("tag-cochera").checked = prop.etiquetas.includes("Cochera");
         document.getElementById("tag-familias").checked = prop.etiquetas.includes("Familias");
         document.getElementById("tag-estudiantes").checked = prop.etiquetas.includes("Estudiantes");
         document.getElementById("tag-parejas").checked = prop.etiquetas.includes("Parejas");
 
-        // Cambiamos el modo a "Edición"
         idEdicion = prop.id;
         
-        // Cambiamos el texto del botón
         const btnSubmit = document.querySelector("#publish-form button[type='submit']");
         if (btnSubmit) btnSubmit.textContent = "Guardar Cambios";
 
-        // Llevamos al usuario de vuelta arriba al formulario
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 });

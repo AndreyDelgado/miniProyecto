@@ -1,7 +1,7 @@
 /* =========================
-   Botones, etiquetas, tarjetas de propiedad,
-   estadísticas, aside y elementos reutilizables
-   que aparecen en más de una página.
+    Botones, etiquetas, tarjetas de propiedad,
+    estadísticas, aside y elementos reutilizables
+    que aparecen en las páginas.
    ========================= */
 
 /* ── BOTONES ── */
@@ -72,7 +72,7 @@
     color: var(--color-fondo);
 }
 
-/* Botón deshabilitado (para propiedades no disponibles) */
+/* Botón deshabilitado */
 .btn-card-disabled {
     pointer-events: none;
     opacity: 0.4;
@@ -237,7 +237,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    /* Placeholder visual mientras no hay imagen */
+    /* Placeholder visual cuando no hay imagen */
     background: linear-gradient(135deg, var(--color-superficie-2) 0%, #333328 100%);
 }
 
@@ -451,7 +451,7 @@ aside small {
     width: 100%;
 }
 
-/* Aplicamos el diseño horizontal ÚNICAMENTE cuando la rejilla está dentro de un carrusel */
+/* Aplica el diseño horizontal solo cuando la rejilla está dentro de un carrusel */
 .carousel-window .listings-grid {
     display: flex; 
     flex-direction: row;
@@ -460,7 +460,7 @@ aside small {
     will-change: transform;
 }
 
-/* Asegura el tamaño de la tarjeta SOLO dentro del carrusel de inicio */
+/* Asegura el tamaño de la tarjeta solo dentro del carrusel */
 .carousel-window .property-card {
     flex: 0 0 calc(25% - 15px);
     min-width: 250px;

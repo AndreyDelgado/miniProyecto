@@ -14,16 +14,15 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-        <!-- Encabezado principal fijo del sitio -->
+        <!-- Encabezado del sitio -->
     <header class="site-header">
         <div class="container header-content">
             <p class="logo">
                 <img src="assets/images/aptify-logo.png" alt="Logo Aptify" class="logo-img">
                 <strong>Aptify</strong>
             </p>
-            <!-- Checkbox oculto para controlar el menú hamburguesa sin JavaScript -->
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
-            <!-- Botón visual del menú hamburguesa -->
+
             <label for="menu-toggle" class="menu-button">
                 <span></span>
                 <span></span>
@@ -60,7 +59,8 @@
                                         <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px;">Ingresar</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado); font-weight: bold;">Crear cuenta</a>
+                                        ¿Nuevo? <a href="#" id="link-to-register" style="color: var(--color-dorado); 
+                                        font-weight: bold;">Crear cuenta</a>
                                     </p>
                                 </div>
 
@@ -80,10 +80,12 @@
                                             <label for="reg-pass">Contraseña</label>
                                             <input type="password" id="reg-pass" required placeholder="Mínimo 8">
                                         </div>
-                                        <button type="submit" class="btn-gold" style="width: 100%; margin-top: 8px;">Registrarse</button>
+                                        <button type="submit" class="btn-gold" style="width: 100%; 
+                                        margin-top: 8px;">Registrarse</button>
                                     </form>
                                     <p class="auth-switch" style="margin-top: 14px; font-size: 0.85rem; text-align: center;">
-                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado); font-weight: bold;">Iniciar sesión</a>
+                                        ¿Ya tienes cuenta? <a href="#" id="link-to-login" style="color: var(--color-dorado); 
+                                        font-weight: bold;">Iniciar sesión</a>
                                     </p>
                                 </div>
 
@@ -94,7 +96,8 @@
                                         <p id="user-email-display">correo@ejemplo.com</p>
                                     </div>
                                     <div class="session-buttons">
-                                        <button id="btn-logout" class="btn-secondary" style="width: 100%; margin-top: 16px;">Cerrar Sesión</button>
+                                        <button id="btn-logout" class="btn-secondary" style="width: 100%; 
+                                        margin-top: 16px;">Cerrar Sesión</button>
                                     </div>
                                 </div>
 
@@ -106,7 +109,7 @@
         </div>
     </header>
 
-    <!-- Ubicación actual (breadcrumb) -->
+    <!-- Ubicación actual -->
     <nav class="breadcrumb" aria-label="Ubicación actual">
         <div class="container">
             <a href="index.html">Inicio</a>
@@ -131,19 +134,25 @@
                     <div class="form-group full-width">
                         <label for="prop-title">Título del anuncio</label>
                         <input type="text" id="prop-title" required placeholder="Ej. Apartamento moderno en el centro">
-                        <small id="error-title" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; El título debe tener al menos 10 caracteres para ser descriptivo.</small>
+                        <small id="error-title" class="form-hint" style="color: #dc2626; 
+                        display: none; margin-top: 4px;">&#9888; El título debe tener al menos 
+                        10 caracteres para ser descriptivo.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="prop-price">Precio mensual (CRC)</label>
                         <input type="number" id="prop-price" required placeholder="Ej. 250000">
-                        <small id="error-price" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; El precio debe ser un monto válido (mayor a 50,000).</small>
+                        <small id="error-price" class="form-hint" style="color: #dc2626;
+                        display: none; margin-top: 4px;">&#9888; El precio debe ser un monto
+                        válido (mayor a 50,000).</small>
                     </div>
 
                     <div class="form-group">
                         <label for="prop-deposito">Depósito de garantía (CRC)</label>
                         <input type="number" id="prop-deposito" required placeholder="Ej. 250000">
-                        <small id="error-deposito" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; El depósito no puede ser cero ni negativo.</small>
+                        <small id="error-deposito" class="form-hint" style="color: #dc2626;
+                        display: none; margin-top: 4px;">&#9888; El depósito no puede ser 
+                        cero ni negativo.</small>
                     </div>
 
                     <div class="form-group">
@@ -181,38 +190,49 @@
                     <div class="form-group">
                         <label for="prop-canton">Cantón</label>
                         <input type="text" id="prop-canton" required placeholder="Ej. Central, Escazú...">
-                        <small id="error-canton" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; El cantón debe tener al menos 3 letras.</small>
+                        <small id="error-canton" class="form-hint" style="color: #dc2626; 
+                        display: none; margin-top: 4px;">&#9888; El cantón debe tener al menos 3 letras.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="prop-rooms">Habitaciones</label>
                         <input type="number" id="prop-rooms" min="1" max="10" required placeholder="Ej. 2">
-                        <small id="error-rooms" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; Debe tener al menos 1 habitación.</small>
+                        <small id="error-rooms" class="form-hint" style="color: #dc2626; 
+                        display: none; margin-top: 4px;">&#9888; Debe tener al menos 1 habitación.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="prop-baths">Baños</label>
                         <input type="number" id="prop-baths" min="1" max="5" step="0.5" required placeholder="Ej. 1.5">
-                        <small id="error-baths" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; Debe tener al menos 1 baño.</small>
+                        <small id="error-baths" class="form-hint" style="color: #dc2626; 
+                        display: none; margin-top: 4px;">&#9888; Debe tener al menos 1 baño.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="prop-metros">Metros cuadrados (m²)</label>
                         <input type="number" id="prop-metros" min="10" required placeholder="Ej. 65">
-                        <small id="error-metros" class="form-hint" style="color: #dc2626; display: none; margin-top: 4px;">&#9888; El área mínima permitida es de 10 m².</small>
+                        <small id="error-metros" class="form-hint" style="color: #dc2626; 
+                        display: none; margin-top: 4px;">&#9888; El área mínima permitida es de 10 m².</small>
                     </div>
 
-                    <div class="form-group full-width" style="background-color: rgba(201, 168, 76, 0.1); border-left: 4px solid var(--color-dorado); padding: 16px; border-radius: var(--radio-sm);">
-                        <h4 style="color: var(--color-dorado); margin-bottom: 8px; font-size: 0.95rem;">&#128176; Depósito Sugerido</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-texto); margin-bottom: 4px;">Con base en el tipo, tamaño y precio de la propiedad, te sugerimos cobrar un depósito de:</p>
-                        <p style="font-size: 1.25rem; color: var(--color-dorado); font-weight: bold; margin-bottom: 0;" id="calc-deposito">₡0</p>
-                        <small style="color: var(--color-texto-suave); font-size: 0.75rem; margin-top: 8px; display: block;">
+                    <div class="form-group full-width" style="background-color: rgba(201, 168, 76, 0.1); 
+                    border-left: 4px solid var(--color-dorado); padding: 16px; border-radius: var(--radio-sm);">
+                        <h4 style="color: var(--color-dorado); margin-bottom: 8px; font-size: 0.95rem;">&#128176; 
+                            Depósito Sugerido</h4>
+                        <p style="font-size: 0.85rem; color: var(--color-texto); margin-bottom: 4px;">Con base 
+                            en el tipo, tamaño y precio de la propiedad, te sugerimos cobrar un depósito de:</p>
+                        <p style="font-size: 1.25rem; color: var(--color-dorado); font-weight: bold; 
+                        margin-bottom: 0;" id="calc-deposito">₡0</p>
+                        <small style="color: var(--color-texto-suave); font-size: 0.75rem; 
+                        margin-top: 8px; display: block;">
                         * Cálculo dinámico: Estudios (-10%), Casas (+15%) y recargo por áreas mayores a 200m².
                         </small>
                     </div>
 
-                    <div class="form-group checkboxes full-width" style="background-color: var(--color-superficie-2); padding: 16px; border-radius: var(--radio-sm); border: 1px solid var(--color-borde);">
-                        <label style="margin-bottom: 8px; display: block; font-weight: bold; color: var(--color-dorado);">Estilo de Vida</label>
+                    <div class="form-group checkboxes full-width" style="background-color: var(--color-superficie-2); 
+                    padding: 16px; border-radius: var(--radio-sm); border: 1px solid var(--color-borde);">
+                        <label style="margin-bottom: 8px; display: block; font-weight: bold; 
+                        color: var(--color-dorado);">Estilo de Vida</label>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px;">
                             <label><input type="checkbox" id="tag-mascotas" value="Mascotas"> Acepta mascotas</label>
                             <label><input type="checkbox" id="tag-cochera" value="Cochera"> Con cochera</label>
@@ -225,12 +245,15 @@
                     <div class="form-group full-width">
                         <label for="prop-image">URL de la imagen (Portada)</label>
                         <input type="url" id="prop-image" required placeholder="https://ejemplo.com/foto-apartamento.jpg">
-                        <small class="form-hint">📐 <b>Recomendación:</b> Utiliza imágenes horizontales con un tamaño aproximado de <b>800x600 píxeles</b> (formato 4:3) para que se ajusten perfectamente a las tarjetas de búsqueda sin recortarse.</small>
+                        <small class="form-hint">📐 <b>Recomendación:</b> Utiliza imágenes horizontales con un tamaño 
+                            aproximado de <b>800x600 píxeles</b> (formato 4:3) para que se ajusten perfectamente a las 
+                            tarjetas de búsqueda sin recortarse.</small>
                     </div>
 
                     <div class="form-group full-width">
                         <label for="prop-desc">Descripción detallada</label>
-                        <textarea id="prop-desc" rows="4" required placeholder="Describe las amenidades, cercanías, etc..."></textarea>
+                        <textarea id="prop-desc" rows="4" required placeholder="Describe las amenidades, 
+                        cercanías, etc..."></textarea>
                     </div>
                 </div>
 
@@ -240,7 +263,8 @@
                 </div>
             </form>
 
-            <div id="gestion-propiedades" style="display: none; margin-top: 60px; border-top: 1px solid var(--color-borde); padding-top: 40px;">
+            <div id="gestion-propiedades" style="display: none; margin-top: 60px; 
+            border-top: 1px solid var(--color-borde); padding-top: 40px;">
                 <h3 style="color: var(--color-texto); margin-bottom: 20px;">Mis Propiedades Publicadas</h3>
                 <div id="lista-mis-propiedades" style="display: grid; gap: 16px;"></div>
             </div>
